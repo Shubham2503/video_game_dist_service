@@ -1,3 +1,29 @@
+<?php 
+session_start();
+ 
+if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
+    header("location: home.php");
+    exit;
+}
+
+//delete later////////
+$severname = "localhost";
+$username = "root";
+$pwd = "";
+$dbname = "gamedb";
+$conn = new mysqli($severname, $username, $pwd, $dbname);
+// Check connection
+if (!$conn) {
+    die("Connection failed: " . $conn->connect_error);
+}
+///////////////////////
+
+if($_SERVER["REQUEST_METHOD"] == "POST")
+{
+  
+}
+?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -30,7 +56,7 @@
 
   <body class="text-center">
 
-    <form class="form-signin">
+    <form class="form-signin" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
       <img class="mb-4" src="/image/" alt="" width="72" height="72">
       <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
       <label for="inputEmail" class="sr-only">Email address</label>
