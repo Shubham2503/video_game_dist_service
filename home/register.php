@@ -1,29 +1,3 @@
-<?php 
-  session_start();
-  
-  if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
-      header("location: home.php");
-      exit;
-  }
-
-  //delete later////////
-  $severname = "localhost";
-  $username = "root";
-  $pwd = "";
-  $dbname = "gamedb";
-  $conn = new mysqli($severname, $username, $pwd, $dbname);
-  // Check connection
-  if (!$conn) {
-      die("Connection failed: " . $conn->connect_error);
-  }
-  ///////////////////////
-
-  if($_SERVER["REQUEST_METHOD"] == "POST")
-  {
-    
-  }
-?>
-
 <!doctype html>
 <html lang="en">
   <head>
@@ -32,7 +6,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Jekyll v4.1.1">
-    <title>Signin Template · Bootstrap</title>
+    <title>Register</title>
     <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <style>
@@ -51,29 +25,34 @@
       }
     </style>
 
-    <link href="signin.css" rel="stylesheet">
+    <link href="register.css" rel="stylesheet">
   </head>
 
   <body class="text-center">
 
-    <form class="form-signin" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+    <form class="form-register">
       <img class="mb-4" src="/image/" alt="" width="72" height="72">
-      <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+      <h1 class="h3 mb-3 font-weight-normal">Register</h1>
+
       <label for="inputEmail" class="sr-only">Email address</label>
       <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+      <label for="inputEmail" class="sr-only">Username</label>
+      <input type="email" id="inputUname" class="form-control" placeholder="Username" required autofocus>
       <label for="inputPassword" class="sr-only">Password</label>
       <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+      <label for="inputPassword" class="sr-only">Confirm Password</label>
+      <input type="password" id="inputConfirmPassword" class="form-control" placeholder="Confirm Password" required>
+      <label for="inputEmail" class="sr-only">Date of Birth</label>
+      <input type="date" id="inputDOB" class="form-control" placeholder="Date of Birth" required autofocus>
 
-      <div class="checkbox mb-3">
-      <label>
-        <input type="checkbox" value="remember-me"> Remember me
-      </label>
-      </div>
 
-      <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-      <p class="mt-5 mb-3 text-muted">&copy; 2017-2020</p>
+      <button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
     </form>
 
   </body>
 </html>
 
+
+<?php
+    // Home page
+?>
