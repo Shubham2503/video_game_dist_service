@@ -20,7 +20,58 @@ if (!$conn) {
 
 if($_SERVER["REQUEST_METHOD"] == "POST")
 {
-  
+ $username = $password = "";
+ $username_err = $password_err = $match_err = "";
+
+ $sql = "SELECT * FROM users WHERE username = '".trim($_POST["username"])."'";
+ $res = mysqli_query($conn, $sql);
+
+  if(mysqli_num_rows($res) > 0)
+  {
+    $username = trim($_POST["username"]);    
+  }
+  else
+  {
+    ///change this///////////////
+    $username_err = "No Such Username<br>";
+    echo $username_err;
+  }
+
+  if(strlen(trim($_POST["password"])) < 8)
+  {
+    //////////change this
+    $password_err = "Password must have atleast 8 characters.<br>";
+    echo $password_err;
+  } 
+  else
+  {
+    $password = trim($_POST["password"]);
+  }
+  $row = mysqli_fetch_assoc($res);
+
+  if($row["password"] != $password)
+  {
+    ///////change this
+    $match_err = "incorrect";
+    echo "incorrect password<br>";
+  }
+   
+
+  if(empty($username_err)&&empty($password_err)&&empty($match_err))
+  {
+    session_start();
+
+    $_SESSION["loggedin"] = true;
+    $_SESSION["id"] = $id;
+    $_SESSION["username"] = $username;                            
+    header("location: home.php");
+  }
+  else
+  {
+    ////change this
+    echo "Something went wrong<br>";
+  }
+  mysqli_close($conn); 
 }
 ?>
 
