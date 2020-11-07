@@ -116,14 +116,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
       <label for="inputPassword" class="sr-only">Password</label>
       <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required>
 
-      <div class="checkbox mb-3">
-      <label>
-        <input type="checkbox" value="remember-me"> Remember me
-      </label>
-      </div>
 
       <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-      <p class="mt-5 mb-3 text-muted">&copy; 2017-2020</p>
+      <a href="register.php" class="btn btn-lg btn-outline-secondary btn-block" type="button">Register</a>
+      <p class="mt-5 mb-3 text-muted">&copy; 2020-2020</p>
     </form>
 
   </body>
