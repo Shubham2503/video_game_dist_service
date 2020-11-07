@@ -73,6 +73,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
   }
   mysqli_close($conn); 
 }
+
 ?>
 
 <!doctype html>
@@ -107,7 +108,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 
   <body class="text-center">
 
-    <form class="form-signin" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+    <form class="form-signin" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" id="form">
       <img class="mb-4" src="/image/" alt="" width="72" height="72">
       <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
       <label for="inputEmail" class="sr-only">Email address</label>
