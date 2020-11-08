@@ -72,7 +72,20 @@
       echo "Error: " . $sql . "<br>" . mysqli_error($conn);
     }
 
+    //dummy games
+    $sql = "INSERT INTO `games` (`game_id`, `name`, `price`, `year`, `developer`, `descrip`) VALUES ('1', 'tempo', '12', '2010', 'hell', 'bba babjalgdjlasjdg');";
+    if (mysqli_query($conn, $sql)) {
+      echo "dummy records added in table game";
+    } else {
+      echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+    }
 
+    $sql = "INSERT INTO `game_category` (`game_id`, `category`) VALUES ('1', 'cat 1');"
+     if (mysqli_query($conn, $sql)) {
+      echo "dummy records added in table game_category";
+    } else {
+      echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+    }
     
     mysqli_close($conn);
 
