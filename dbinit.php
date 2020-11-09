@@ -95,7 +95,13 @@
     }
 
     //dummy games
-    $sql = "INSERT INTO `games` (`game_id`, `name`, `price`, `year`, `developer`, `descrip`) VALUES ('1', 'tempo', '12', '2010', 'hell', 'bba babjalgdjlasjdg');";
+    $sql = "INSERT INTO `games` (`game_id`, `name`, `price`, `year`, `developer`, `descrip`) VALUES ('1', 'Minecraft', '26', '2010', ' Mojang Studios', 'With new games, new updates, and new ways to play, join one of the biggest communities in gaming and start crafting today!');";
+    if (mysqli_query($conn, $sql)) {
+      echo "dummy records added in table game";
+    } else {
+      echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+    }
+    $sql = "INSERT INTO `games` (`game_id`, `name`, `price`, `year`, `developer`, `descrip`) VALUES ('2', 'Watch Dogs: Legion', '87', '2020', 'Ubisoft Toronto', 'Build a resistance');";
     if (mysqli_query($conn, $sql)) {
       echo "dummy records added in table game";
     } else {
