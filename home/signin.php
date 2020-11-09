@@ -63,7 +63,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 
     $_SESSION["loggedin"] = true;
     $_SESSION["id"] = $id;
-    $_SESSION["username"] = $username;                            
+    $_SESSION["username"] = $username;      
+    setcookie("userid", $row["userid"], time() + (86400 * 30));
     header("location: home.php");
   }
   else
