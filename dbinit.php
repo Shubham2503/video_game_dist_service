@@ -108,6 +108,21 @@
     } else {
       echo "Error: " . $sql . "<br>" . mysqli_error($conn);
     }
+
+    //create user_games table
+    $sql = "CREATE TABLE `gamedb`.`user_games` ( `userid` INT NOT NULL , `game_id` INT NOT NULL ) ENGINE = InnoDB;";
+    if (mysqli_query($conn, $sql)) {
+      echo "table: user_games created";
+    } else {
+      echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+    }
+    //add dummy val
+    $sql = "INSERT INTO `user_games` (`userid`, `game_id`) VALUES ('1', '1');";
+    if (mysqli_query($conn, $sql)) {
+      echo "dummy records added in table user_games";
+    } else {
+      echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+    }
     
     mysqli_close($conn);
 
