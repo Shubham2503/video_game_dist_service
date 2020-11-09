@@ -11,6 +11,26 @@
     if (!$conn) {
       die("Connection failed: " . mysqli_connect_error());
     }
+
+    // Deleting database if already exists
+    $dbname = "gamedb";
+    $conn = mysqli_connect($servername, $username, $password, $dbname);
+    if($conn)
+    {
+      $sql = "DROP DATABASE gamedb";
+      if (mysqli_query($conn, $sql)) {
+        echo "Database deleted successfully";
+      } else {
+        echo "Error deleting database: " . mysqli_error($conn);
+      }
+
+    }
+
+
+
+
+
+
    // Create database
   $sql = "CREATE DATABASE gamedb";
   if (mysqli_query($conn, $sql)) {
