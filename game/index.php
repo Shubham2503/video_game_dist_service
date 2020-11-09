@@ -34,16 +34,8 @@
 
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-  <meta name="generator" content="Jekyll v4.1.1">
   <title>Game</title>
-
-
-  <!-- Bootstrap core CSS -->
   <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
   <style>
     .bd-placeholder-img {
       font-size: 1.125rem;
@@ -60,7 +52,6 @@
       }
     }
   </style>
-  <!-- Custom styles for this template -->
   <link href="carousel.css" rel="stylesheet">
 </head>
 

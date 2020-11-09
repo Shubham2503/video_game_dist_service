@@ -82,13 +82,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-  <meta name="generator" content="Jekyll v4.1.1">
   <title>Register</title>
   <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
   <style>
     .bd-placeholder-img {
       font-size: 1.125rem;
@@ -138,7 +133,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
     <button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
-      <a href="signin.php" class="btn btn-lg btn-outline-secondary btn-block" type="button">Sign in</a>
+    <a href="signin.php" class="btn btn-lg btn-outline-secondary btn-block" type="button">Sign in</a>
   </form>
 
 </body>
