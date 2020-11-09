@@ -53,6 +53,7 @@
     }
   </style>
   <link href="carousel.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -105,7 +106,7 @@
             <h1>Example headline.</h1>
             <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
             <p>
-              <form method="POST" action="../transaction/index.php">
+              <form method="POST" action="../transaction/temp.php">
               <button class="btn btn-lg btn-primary">BUY</button>
               </form>
             </p>
