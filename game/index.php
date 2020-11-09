@@ -158,7 +158,8 @@
         <div class="col-lg-4">
           <h2><?php echo "$name"; ?></h2>
           <p><?php echo "$descrip"; ?></p>
-          <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+          <p>Price : <?php echo "$price"; ?></p>
+          <p>Release : <?php echo "$year"; ?></p>
         </div>
         
       </div><!-- /.row -->
@@ -166,7 +167,7 @@
     <!-- FOOTER -->
     <footer class="container">
       <p class="float-right"><a href="#">Back to top</a></p>
-      <p>&copy; 2017-2020 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+      <p>&copy; 2017-2020 Company, Inc.</p>
     </footer>
   </main>
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
