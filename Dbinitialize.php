@@ -55,7 +55,9 @@
     username VARCHAR(30) NOT NULL,
     password VARCHAR(30) NOT NULL,
     email VARCHAR(50) NOT NULL,
-    age INT NOT NULL
+    age INT NOT NULL, 
+    fname varchar(30) NOT NULL, 
+    lname varchar(30) NOT NULL
     )";
     
     if (mysqli_query($conn, $sql)) {
@@ -67,7 +69,7 @@
     
     
     // Inserting users in table
-    $sql = "INSERT INTO `users` ( `username`, `password`, `email`, `age`) VALUES ('admin', '12345678', 'temp@temp.temp', '20')";
+    $sql = "INSERT INTO `users` ( `username`, `password`, `email`, `age`, `fname`, `lname`) VALUES ('admin', '12345678', 'temp@temp.temp', '20', 'admin', 'admin')";
 
     if (mysqli_query($conn, $sql)) {
       echo "dummy records added in table users";

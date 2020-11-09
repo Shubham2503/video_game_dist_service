@@ -73,6 +73,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
     echo $age_err;
   }
 
+  $fname = $_POST["fname"];
+  $lname = $_POST["lname"];
   $sql = "INSERT into users (username, password, email, age, fname, lname) values('$username', '$password', '$email', '$age', '$fname', '$lname')";
   if(empty($username_err) && empty($password_err) && empty($email_err) && empty($age_err) && mysqli_query($conn, $sql))
   {
