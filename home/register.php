@@ -22,6 +22,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 {
   $username = $password = $email=  "";
   $username_err = $password_err = $email_err = $age_err = "";
+  $fname = $lname = "";
 
   $username = trim($_POST["username"]);
   $sql = "SELECT userid FROM users WHERE username = '$username'";
@@ -72,7 +73,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
     echo $age_err;
   }
 
-  $sql = "INSERT into users (username, password, email, age) values('$username', '$password', '$email', '$age')";
+  $sql = "INSERT into users (username, password, email, age, fname, lname) values('$username', '$password', '$email', '$age', '$fname', '$lname')";
   if(empty($username_err) && empty($password_err) && empty($email_err) && empty($age_err) && mysqli_query($conn, $sql))
   {
     header("location: signin.php");
@@ -122,6 +123,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
     <form class="form-register" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
       <img class="mb-4" src="/image/" alt="" width="72" height="72">
       <h1 class="h3 mb-3 font-weight-normal">Register</h1>
+
+      <label for="inputfname" class="sr-only">First Name</label>
+      <input type="text" id="inputfname" class="form-control" placeholder="First Name" required autofocus name = "fname">
+
+      <label for="inputlname" class="sr-only">Last Name</label>
+      <input type="text" id="inputlname" class="form-control" placeholder="Last Name" required autofocus name = "lname">
 
       <label for="inputEmail" class="sr-only">Email address</label>
       <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus name = "email">
