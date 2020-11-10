@@ -6,7 +6,7 @@
     $error = "";
 
     //debug////////
-    echo $userid.$game_id.$email.$card_no;
+    // echo $userid.$game_id.$email.$card_no;
     ////
 
     //delete later////////
