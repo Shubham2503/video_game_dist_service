@@ -22,7 +22,7 @@
     ///////////////////////
 
     //debug database
-    $sql = "SELECT * FROM users WHERE userid = '$userid' and game_id = '$game_id'";
+    $sql = "SELECT * FROM user_games WHERE userid = '$userid' and game_id = '$game_id'";
     $res = mysqli_query($conn, $sql);
     if(mysqli_num_rows($res) > 0)
     {
