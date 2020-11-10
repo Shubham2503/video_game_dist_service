@@ -42,4 +42,29 @@
         else
             echo "transaction err";
     }
+
+    // require 'C:/xampp/vendor/autoload.php';
+    // use PHPMailer\PHPMailer\PHPMailer;
+    // $mail = new PHPMailer();
+    // $mail->isSMTP();
+    // $mail->Host = 'smtp.gmail.com';
+    // $mail->SMTPAuth = true;
+    // $mail->SMTPSecure = 'tls';
+    // $mail->Port = 587;
+    // $mail->Username = ""; 
+	// $mail->Password = "";
+	// $mail->setFrom("tempmailforst3@gmail.com", "game store");///change acc
+	// $mail->addReplyTo("tempmailforst3@gmail.com", "game store");
+	// $mail->addAddress($email, ' '); 
+
+	// $mail->Subject = "";//add game name here
+	// $mail->isHTML(true);
+	// $mailContent = "testmail";
+	// $mail->Body = $mailContent;
+	// if($mail->send()){
+	// 	echo 'Message has been sent';
+	// }else{
+	// 	echo 'Message could not be sent.';
+	// 	echo 'Mailer Error: ' . $mail->ErrorInfo;
+	// }
 ?>
