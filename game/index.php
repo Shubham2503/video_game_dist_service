@@ -128,7 +128,15 @@
             <p>
             <!-- /////////////////button here//// -->
               <form method="POST" action="../transaction/index.php">
-              <button <?php echo $btn_setter  ?> class="btn btn-lg btn-primary" name="game_id" value="<?php echo $game_id; ?>">BUY</button>
+              <button <?php echo $btn_setter  ?> class="btn btn-lg btn-primary" name="game_id" value="<?php echo $game_id; ?>">
+              
+              <?php
+                if($btn_setter == "disabled")
+                echo "Already Owned";
+                else
+                echo "BUY NOW";
+              ?>
+              </button>
               </form>
             </p>
           </div>
