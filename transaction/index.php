@@ -137,7 +137,7 @@
 
                 <h4 class="mb-3">Billing</h4>
 
-                <form class="needs-validation" novalidate>
+                <form class="needs-validation" novalidate method="post" action="receipt.php">
                     <div class="row">
                         <div class="col-md-6 mb-3">
                             <label for="firstName">First name</label>
@@ -232,7 +232,7 @@
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for="cc-number">Credit card number</label>
-                            <input type="text" class="form-control" id="cc-number" placeholder="" required>
+                            <input type="text" class="form-control" id="cc-number" placeholder="" name="card_no" required>
                             <div class="invalid-feedback">
                                 Credit card number is required
                             </div>
