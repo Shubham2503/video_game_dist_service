@@ -1,8 +1,20 @@
 <?php 
     require '../include/connect_db.php';
+
+
+
+    //              SETTING VARIABLES.............
+    if(isset($_COOKIE))
+    {
+      // $userid = $_COOKIE['userid'];
+    }
+
+    $userid = 1;
+     
+    // if($_SERVER["REQUEST_METHOD"] == "POST")
     if(1)
     {
-
+        // $game_id = $_POST['game_id'];
         $game_id = 1;
         $sql = "SELECT name,price, year,descrip FROM games WHERE game_id = 1";
         $result = mysqli_query($conn, $sql);
@@ -24,6 +36,14 @@
     $image2 = "<img class='bd-placeholder-img' width='100%' height='100%' src='../image/$game_id/2.jpg' ";
     $image3 = "<img class='bd-placeholder-img' width='100%' height='100%' src='../image/$game_id/3.jpg' ";
 
+
+
+    //                         BUTTON FEATURES ......................
+    $btn_setter = "";
+    $sql = "SELECT userid FROM user_games WHERE game_id = $game_id and userid = $userid";
+    $result = mysqli_query($conn, $sql);
+    if (mysqli_num_rows($result) >= 1) 
+     $btn_setter = "disabled";
 
     mysqli_close($conn);
 
@@ -108,7 +128,7 @@
             <p>
             <!-- /////////////////button here//// -->
               <form method="POST" action="../transaction/index.php">
-              <button class="btn btn-lg btn-primary" name="game_id" value="<?php echo $game_id; ?>">BUY</button>
+              <button <?php echo $btn_setter  ?> class="btn btn-lg btn-primary" name="game_id" value="<?php echo $game_id; ?>">BUY</button>
               </form>
             </p>
           </div>
