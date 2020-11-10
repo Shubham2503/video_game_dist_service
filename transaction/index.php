@@ -257,7 +257,9 @@
                     </div>
 
                     <hr class="mb-4">
-
+                    <input name="userid" value="<?php echo $userid?>" hidden>
+                    <input name="email" value="<?php echo $email?>" hidden>
+                    <input name="game_id" value="<?php echo $game_id?>" hidden>
                     <button class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button>
                 </form>
             </div>
