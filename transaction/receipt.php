@@ -33,8 +33,8 @@
 
     if(empty($error))
     {
-        $t = time();
-        $sql = "INSERT INTO user_games (userid, game_id, card_no, time) VALUES ('$userid', '$game_id', '$card_no', '$t')";
+        
+        $sql = "INSERT INTO user_games (userid, game_id, card_no) VALUES ('$userid', '$game_id', '$card_no')";
         if(mysqli_query($conn, $sql))
         {
             echo "transaction successfull";
