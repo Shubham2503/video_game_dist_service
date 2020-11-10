@@ -6,7 +6,7 @@
     $error = "";
 
     //debug////////
-    echo $userid.$game_id.$email.$card_no;
+    // echo $userid.$game_id.$email.$card_no;
     ////
 
     //delete later////////
@@ -34,7 +34,8 @@
     if(empty($error))
     {
         $t = time();
-        $sql = "INSERT INTO user_games (userid, game_id, card_no, time) VALUES ('$userid', '$game_id', '$card_no', '$t')";
+        echo $t;
+        $sql = "INSERT INTO user_games (userid, game_id, card_no, date_time) VALUES ('$userid', '$game_id', '$card_no', '$t')";
         if(mysqli_query($conn, $sql))
         {
             echo "transaction successfull";

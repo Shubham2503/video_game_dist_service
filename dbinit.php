@@ -116,7 +116,7 @@
     }
 
     //create user_games table
-    $sql = "CREATE TABLE `gamedb`.`user_games` ( `userid` INT NOT NULL , `game_id` INT NOT NULL , `card_no` INT NOT NULL , `datetime` TIMESTAMP NOT NULL ) ENGINE = InnoDB;";
+    $sql = "CREATE TABLE `gamedb`.`user_games` ( `userid` INT NOT NULL , `game_id` INT NOT NULL , `card_no` INT NOT NULL , `date_time` TIMESTAMP NOT NULL ) ENGINE = InnoDB;";
     if (mysqli_query($conn, $sql)) {
       echo "table: user_games created";
     } else {
