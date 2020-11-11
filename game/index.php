@@ -180,6 +180,8 @@ mysqli_close($conn);
     </div>
 
 
+    
+
 
     <div class="container marketing">
 
@@ -193,30 +195,41 @@ mysqli_close($conn);
         </div>
 
       </div><!-- /.row -->
-      <div class="row">
-      <div class="row">
-        <div class="col-md-6">
-          <?php echo $image; ?>
-        </div>
-        <div class="col-md-6">
-          <?php echo $image2; ?>
-        </div>
-      </div>
-      <div class="row" style="margin-top: 10px;margin-bottom: 10px;">
-        <div class="col">
-          <?php echo $image3; ?>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-6">
-          <?php echo $image; ?>
-        </div>
-        <div class="col-md-6">
-          <?php echo $image2; ?>
-        </div>
-      </div>
+      <p>
+      <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+        Show More
+      </button>
+    </p>
+    <div class="collapse" id="collapseExample">
+      <div class="card card-body">
+        <div class="row">
+          <div class="row">
+            <div class="col-md-6">
+              <?php echo $image; ?>
+            </div>
+            <div class="col-md-6">
+              <?php echo $image2; ?>
+            </div>
+          </div>
+          <div class="row" style="margin-top: 10px;margin-bottom: 10px;">
+            <div class="col">
+              <?php echo $image3; ?>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <?php echo $image; ?>
+            </div>
+            <div class="col-md-6">
+              <?php echo $image2; ?>
+            </div>
+          </div>
 
+
+
+        </div>
       </div>
+    </div>
 
     </div>
     <!-- FOOTER -->
