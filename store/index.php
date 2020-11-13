@@ -13,11 +13,12 @@
     $sql = "SELECT DISTINCT category FROM game_category";
     $result = mysqli_query($conn, $sql);
     $game_cat = array();
-
+    $cat = array();
     while ( $row = mysqli_fetch_assoc($result)) {
         // output data of each row
         $category = $row["category"];
         $game_cat[$category] = array();
+        array_push($cat,$category);
     }
     console_log($game_cat);
 
@@ -33,4 +34,16 @@
         array_push($game_cat[$category],$game_id);
     }
     console_log($game_cat);
+
+
+    ////////////////////////////////////////////////////////////////
+
+    foreach($cat as $i)
+    {
+        echo "<h2> $i </h2> ";
+
+        foreach($game_cat[$i] as $j)
+        echo "$j ";
+
+    }
 ?>
