@@ -17,7 +17,8 @@
         {
             while ($row = mysqli_fetch_row($res)) 
             {
-                echo $row[1]."<br>";
+                $out = "<a href='../game/index.php?game_id=$row[0]'>$row[1]</a><br>";
+                echo $out;
             }
         }
         else
@@ -43,5 +44,6 @@
 
     <input type="submit" value="Submit">
 </form>
+<a href=""></a>
 </body>
 </html>

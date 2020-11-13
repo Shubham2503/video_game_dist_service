@@ -5,16 +5,15 @@ require '../include/connect_db.php';
 
 //              SETTING VARIABLES.............
 if (isset($_COOKIE)) {
-  // $userid = $_COOKIE['userid'];
+  $userid = $_COOKIE['userid'];
 }
 
-$userid = 1;
 
 // if($_SERVER["REQUEST_METHOD"] == "POST")
 if (1) {
-  // $game_id = $_POST['game_id'];
-  $game_id = 1;
-  $sql = "SELECT name,price, year,descrip FROM games WHERE game_id = 1";
+  $game_id = $_GET['game_id'];
+
+  $sql = "SELECT name,price, year,descrip FROM games WHERE game_id = $game_id";
   $result = mysqli_query($conn, $sql);
   if (mysqli_num_rows($result) == 1) {
     // output data of each row
