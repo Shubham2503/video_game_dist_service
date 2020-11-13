@@ -87,7 +87,7 @@
     }
 
     //table game_category
-    $sql = "CREATE TABLE `gamedb`.`game_category` ( `game_id` INT NOT NULL , `category` VARCHAR(100) NOT NULL, PRIMARY KEY( `game_id`) ) ENGINE = InnoDB;";
+    $sql = "CREATE TABLE `gamedb`.`game_category` ( `game_id` INT NOT NULL , `category` VARCHAR(100) NOT NULL ) ENGINE = InnoDB;";
     if (mysqli_query($conn, $sql)) {
       echo "table: game_category created";
     } else {
@@ -108,7 +108,25 @@
       echo "Error: " . $sql . "<br>" . mysqli_error($conn);
     }
 
-    $sql = "INSERT INTO `game_category` (`game_id`, `category`) VALUES ('1', 'cat 1')";
+    $sql = "INSERT INTO `game_category` (`game_id`, `category`) VALUES ('1', 'cat1')";
+     if (mysqli_query($conn, $sql)) {
+      echo "dummy records added in table game_category";
+    } else {
+      echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+    }
+    $sql = "INSERT INTO `game_category` (`game_id`, `category`) VALUES ('1', 'cat2')";
+     if (mysqli_query($conn, $sql)) {
+      echo "dummy records added in table game_category";
+    } else {
+      echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+    }
+    $sql = "INSERT INTO `game_category` (`game_id`, `category`) VALUES ('2', 'cat1')";
+     if (mysqli_query($conn, $sql)) {
+      echo "dummy records added in table game_category";
+    } else {
+      echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+    }
+    $sql = "INSERT INTO `game_category` (`game_id`, `category`) VALUES ('2', 'cat3')";
      if (mysqli_query($conn, $sql)) {
       echo "dummy records added in table game_category";
     } else {
