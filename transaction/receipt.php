@@ -1,7 +1,8 @@
 <?php  
     $userid = $_POST["userid"];
     $game_id = $_POST["game_id"];
-    $email = $_POST["email"];
+    // $email = $_POST["email"];
+    $email = 'ismailparsola@gmail.com';
     $card_no = $_POST["card_no"];
     $error = "";
 
@@ -10,15 +11,7 @@
     ////
 
     //delete later////////
-    $severname = "localhost";
-    $username = "root";
-    $pwd = "";
-    $dbname = "gamedb";
-    $conn = new mysqli($severname, $username, $pwd, $dbname);
-    // Check connection
-    if (!$conn) {
-        die("Connection failed: " . $conn->connect_error);
-    }
+    require "../include/connect_db.php";
     ///////////////////////
 
     //debug database
@@ -43,28 +36,30 @@
             echo "transaction err";
     }
 
-    // require 'C:/xampp/vendor/autoload.php';
+    require 'PHPMailerAutoload.php';
+    require 'credentials.php';
     // use PHPMailer\PHPMailer\PHPMailer;
-    // $mail = new PHPMailer();
-    // $mail->isSMTP();
-    // $mail->Host = 'smtp.gmail.com';
-    // $mail->SMTPAuth = true;
-    // $mail->SMTPSecure = 'tls';
-    // $mail->Port = 587;
-    // $mail->Username = ""; 
-	// $mail->Password = "";
-	// $mail->setFrom("tempmailforst3@gmail.com", "game store");///change acc
-	// $mail->addReplyTo("tempmailforst3@gmail.com", "game store");
-	// $mail->addAddress($email, ' '); 
+    $mail = new PHPMailer();
+    $mail->SMTPDebug = 4;
+    $mail->isSMTP();
+    $mail->Host = 'smtp.gmail.com';
+    $mail->SMTPAuth = true;
+    $mail->SMTPSecure = 'tls';
+    $mail->Port = 587;
+    $mail->Username = EMAIL; 
+	$mail->Password = PASS;
+	$mail->setFrom(EMAIL, "game store");///change acc
+	$mail->addReplyTo(EMAIL, "game store");
+	$mail->addAddress($email, ' '); 
 
-	// $mail->Subject = "";//add game name here
-	// $mail->isHTML(true);
-	// $mailContent = "testmail";
-	// $mail->Body = $mailContent;
-	// if($mail->send()){
-	// 	echo 'Message has been sent';
-	// }else{
-	// 	echo 'Message could not be sent.';
-	// 	echo 'Mailer Error: ' . $mail->ErrorInfo;
-	// }
+	$mail->Subject = "GAME PURCHASE HAS BEEN DONE .. ";//add game name here
+	$mail->isHTML(true);
+	$mailContent = "testmail";
+	$mail->Body = $mailContent;
+	if($mail->send()){
+		echo 'Message has been sent';
+	}else{
+		echo 'Message could not be sent.';
+		echo 'Mailer Error: ' . $mail->ErrorInfo;
+	}
 ?>
