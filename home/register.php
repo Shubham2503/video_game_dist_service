@@ -6,16 +6,8 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
   exit;
 }
 
-//delete later////////
-$severname = "localhost";
-$username = "root";
-$pwd = "";
-$dbname = "gamedb";
-$conn = new mysqli($severname, $username, $pwd, $dbname);
-// Check connection
-if (!$conn) {
-  die("Connection failed: " . $conn->connect_error);
-}
+//DBMS CONNECTION////////
+ require "../include/connect_db.php";
 ///////////////////////
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -73,6 +65,41 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     echo "something went wrong";
   }
   mysqli_close($conn);
+
+  // SENDING REGISTRATION MAIL ....................
+  require '../phpMailer/PHPMailerAutoload.php';
+    require '../phpMailer/credentials.php';
+    // use PHPMailer\PHPMailer\PHPMailer;
+    $mail = new PHPMailer();
+    // $mail->SMTPDebug = 4;
+    $mail->isSMTP();
+    $mail->Host = 'smtp.gmail.com';
+    $mail->SMTPAuth = true;
+    $mail->SMTPSecure = 'tls';
+    $mail->Port = 587;
+    $mail->Username = EMAIL; 
+	$mail->Password = PASS;
+	$mail->setFrom(EMAIL, "game store");///change acc
+	$mail->addReplyTo(EMAIL, "game store");
+	$mail->addAddress($email, ' '); 
+
+	$mail->Subject = "REGISTRATIO TO GAMES HAS BEEN DONE...";//add game name here
+	$mail->isHTML(true);
+	$mailContent = "testmail";
+	$mail->Body = $mailContent;
+	if($mail->send()){
+		echo 'Message has been sent';
+	}else{
+		echo 'Message could not be sent.';
+		echo 'Mailer Error: ' . $mail->ErrorInfo;
+	}
+
+
+
+
+
+
+
 }
 ?>
 
