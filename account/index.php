@@ -224,21 +224,31 @@ console_log($user_game);
                 <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
                     <div class="container">
 
-                        <table style="width:100%">
-                            <tr>
-                                <th>Game</th>
-                                <th>Published</th>
-                                <th>Developer studio</th>
-                            </tr>
-                            <?php
-                            console_log($games);
-                            foreach ($user_game as $i) {
-                                echo "<tr>";
-                                echo "<td>" . $games[$i]['name'] . "</td><td>" . $games[$i]['year'] . "</td><td>" . $games[$i]['developer'] . "</td>";
-                                echo "</tr>";
-                            }
-                            ?>
-                        </table>
+                        <?php
+                        if (sizeof($user_game) == 0)
+                            echo "<h2><b>No Games yet !</b></h2>";
+                        else {
+                        ?>
+
+                            <table style="width:100%" id='tab'>
+                                <tr>
+                                    <th>Game</th>
+                                    <th>Published</th>
+                                    <th>Developer studio</th>
+                                </tr>
+                                <?php
+                                console_log($games);
+                                foreach ($user_game as $i) {
+                                    echo "<tr>";
+                                    echo "<td>" . $games[$i]['name'] . "</td><td>" . $games[$i]['year'] . "</td><td>" . $games[$i]['developer'] . "</td>";
+                                    echo "</tr>";
+                                }
+                                ?>
+                            </table>
+
+                        <?php
+                        }
+                        ?>
                     </div>
                 </div>
                 <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
