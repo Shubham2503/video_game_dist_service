@@ -112,6 +112,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   <title>Register</title>
   <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <style>
+    body{
+        background:  radial-gradient(#40404b, #111118) rgba(34,34,40,0.94);
+      }
     .bd-placeholder-img {
       font-size: 1.125rem;
       text-anchor: middle;
@@ -135,7 +138,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
   <form class="form-register" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
     <img class="mb-4" src="../image/logo.png" alt="" width="72" height="72">
-    <h1 class="h3 mb-3 font-weight-normal">Register</h1>
+    <h1 class="h3 mb-3 font-weight-normal" style="color:white;">Register</h1>
 
     <label for="inputfname" class="sr-only">First Name</label>
     <input type="text" id="inputfname" class="form-control" placeholder="First Name" required autofocus name="fname">
@@ -160,7 +163,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
     <button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
-    <a href="signin.php" class="btn btn-lg btn-outline-secondary btn-block" type="button">Sign in</a>
+    <a href="signin.php" class="btn btn-lg btn-outline-warning btn-block" type="button">Sign in</a>
   </form>
 
 </body>

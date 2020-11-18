@@ -84,6 +84,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
     <title>Signin Template · Bootstrap</title>
     <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <style>
+      body{
+        background:  radial-gradient(#40404b, #111118) rgba(34,34,40,0.94);
+      }
       .bd-placeholder-img {
         font-size: 1.125rem;
         text-anchor: middle;
@@ -106,7 +109,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 
     <form class="form-signin" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" id="form">
       <img class="mb-4" src="../image/logo.png" alt="" width="72" height="72">
-      <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+      <h1 class="h3 mb-3 font-weight-normal" style="color: white;">Please sign in</h1>
       <label for="inputusername" class="sr-only">Email address</label>
       <input type="text" id="inputusername" name="username" class="form-control" placeholder="user" required autofocus>
       <label for="inputPassword" class="sr-only">Password</label>
@@ -114,7 +117,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 
 
       <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-      <a href="register.php" class="btn btn-lg btn-outline-secondary btn-block" type="button">Register</a>
+      <a href="register.php" class="btn btn-lg btn-outline-warning btn-block" type="button">Register</a>
       <p class="mt-5 mb-3 text-muted">&copy; 2020-2020</p>
     </form>
 
