@@ -121,8 +121,8 @@ mysqli_close($conn);
 
                     <div class="container">
                         <div class="carousel-caption text-left">
-                            <h1>Example headline.</h1>
-                            <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                            <h1><?php echo "$name"; ?></h1>
+                            <p><?php echo "$descrip"; ?></p>
                         </div>
                     </div>
                 </div>
@@ -204,7 +204,8 @@ mysqli_close($conn);
                             <td><?php echo "$price"; ?></td>
                         </tr>
                     </table>
-                    <table style="width:100%;margin-top:10px;" id='tab'>
+                    <hr>
+                    <table style="width:100%;" id='tab'>
                         <tr>
                             <th>Description</th>
                         </tr>
@@ -214,28 +215,28 @@ mysqli_close($conn);
                     </table>
                 </div>
             </div>
-
+            <hr>
 
             <!-- /.row -->
             <div class="row">
-                <div class="col-lg-12">
-                    <p>
-                        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                            Show More
+                <div class="col-lg-12" style="position: relative;">
+                    <div class="row" style="margin-bottom: -20px;">
+                        <div class="col-md-6">
+                            <?php echo $image; ?>
+                        </div>
+                        <div class="col-md-6">
+                            <?php echo $image2; ?>
+                        </div>
+                    </div>
+                    <p style="width:100%;padding:0px;" class="col-lg-12">
+                        <button style="width:100%;" class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                            Show More &#11206;
                         </button>
                     </p>
-                    
                     <div class="collapse" id="collapseExample">
                         <div class="card card-body">
                             <div class="row">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <?php echo $image; ?>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <?php echo $image2; ?>
-                                    </div>
-                                </div>
+
                                 <div class="row" style="margin-top: 10px;margin-bottom: 10px;">
                                     <div class="col">
                                         <?php echo $image3; ?>
