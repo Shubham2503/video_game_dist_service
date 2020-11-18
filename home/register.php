@@ -18,56 +18,55 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $username = trim($_POST["username"]);
   $sql = "SELECT userid FROM users WHERE username = '$username'";
   $res = mysqli_query($conn, $sql);
-  if (mysqli_num_rows($res) > 0) {
-    //change this/////////
-    $username_err = "This username already taken.<br>";
-    echo $username_err;
-  } else {
+  if (mysqli_num_rows($res) > 0) 
+  {
+    $username_err = "This username already taken";
+    echo "<script>alert('$username_err')</script>";;
+  } 
+  else 
+  {
     $username = trim($_POST["username"]);
   }
 
-  if (strlen(trim($_POST["password"])) < 8) {
-    ///////////change this
-    $password_err = "Password must have atleast 8 characters.<br>";
-    echo $password_err;
-  } else {
+  if (empty($username_err) && strlen(trim($_POST["password"])) < 8) 
+  {
+    $password_err = "Password must have atleast 8 characters";
+    echo "<script>alert('$password_err')</script>";
+  } 
+  else 
+  {
     $password = trim($_POST["password"]);
-    if (trim($_POST["cpassword"]) != $password) {
-      //change this/////////////
+    if (trim($_POST["cpassword"]) != $password) 
+    {
       $password_err = "passwords does not match.";
-      echo $password_err;
+      echo "<script>alert('$password_err')</script>";
     }
   }
 
   $email = $_POST["email"];
   $sql = "SELECT userid FROM users WHERE email = '$email' ";
   $res = mysqli_query($conn, $sql);
-  if (mysqli_num_rows($res) > 0) {
-    //change this/////////
-    $email_err = "email already in database.<br>";
-    echo $email_err;
+  if (empty($username_err) && empty($password_err) && mysqli_num_rows($res) > 0) 
+  {
+    $email_err = "email already in database";
+    echo "<script>alert('$email_err')</script>";
   }
 
   $age = date_diff(date_create($_POST["date"]), date_create('today'))->y;
   if ($age < 16) {
     //change this
     $age_err = "you must be at least 16 years old to make register";
-    echo $age_err;
+    echo "<script>alert('$age_err')</script>";
   }
 
   $fname = $_POST["fname"];
   $lname = $_POST["lname"];
   $sql = "INSERT into users (username, password, email, age, fname, lname) values('$username', '$password', '$email', '$age', '$fname', '$lname')";
-  if (empty($username_err) && empty($password_err) && empty($email_err) && empty($age_err) && mysqli_query($conn, $sql)) {
-    header("location: signin.php");
-    exit;
-  } else {
-    echo "something went wrong";
-  }
-  mysqli_close($conn);
-
-  // SENDING REGISTRATION MAIL ....................
-  require '../phpMailer/PHPMailerAutoload.php';
+  if (empty($username_err) && empty($password_err) && empty($email_err) && empty($age_err) && mysqli_query($conn, $sql)) 
+  {
+    
+    // SENDING REGISTRATION MAIL ....................
+    require '../phpMailer/PHPMailerAutoload.php';
     require '../phpMailer/credentials.php';
     // use PHPMailer\PHPMailer\PHPMailer;
     $mail = new PHPMailer();
@@ -78,25 +77,28 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $mail->SMTPSecure = 'tls';
     $mail->Port = 587;
     $mail->Username = EMAIL; 
-	$mail->Password = PASS;
-	$mail->setFrom(EMAIL, "game store");///change acc
-	$mail->addReplyTo(EMAIL, "game store");
-	$mail->addAddress($email, ' '); 
+    $mail->Password = PASS;
+    $mail->setFrom(EMAIL, "game store");///change acc
+    $mail->addReplyTo(EMAIL, "game store");
+    $mail->addAddress($email, ' '); 
 
-	$mail->Subject = "REGISTRATIO TO GAMES HAS BEEN DONE...";//add game name here
-	$mail->isHTML(true);
-	$mailContent = "testmail";
-	$mail->Body = $mailContent;
-	if($mail->send()){
-		echo 'Message has been sent';
-	}else{
-		echo 'Message could not be sent.';
-		echo 'Mailer Error: ' . $mail->ErrorInfo;
-	}
+    $mail->Subject = "REGISTRATIO TO GAMES HAS BEEN DONE...";//add game name here
+    $mail->isHTML(true);
+    $mailContent = "testmail";
+    $mail->Body = $mailContent;
+    if($mail->send()){
+      echo 'Message has been sent';
+    }else{
+      echo 'Message could not be sent.';
+      echo 'Mailer Error: ' . $mail->ErrorInfo;
+    }
+    //
+    //
+    header("location: signin.php");
+    exit;
+  } 
 
-
-
-
+  mysqli_close($conn);
 
 
 
@@ -112,6 +114,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   <title>Register</title>
   <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <style>
+    body{
+        background:  radial-gradient(#40404b, #111118) rgba(34,34,40,0.94);
+      }
     .bd-placeholder-img {
       font-size: 1.125rem;
       text-anchor: middle;
@@ -135,7 +140,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
   <form class="form-register" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
     <img class="mb-4" src="../image/logo.png" alt="" width="72" height="72">
-    <h1 class="h3 mb-3 font-weight-normal">Register</h1>
+    <h1 class="h3 mb-3 font-weight-normal" style="color:white;">Register</h1>
 
     <label for="inputfname" class="sr-only">First Name</label>
     <input type="text" id="inputfname" class="form-control" placeholder="First Name" required autofocus name="fname">
@@ -160,14 +165,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
     <button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
-    <a href="signin.php" class="btn btn-lg btn-outline-secondary btn-block" type="button">Sign in</a>
+    <a href="signin.php" class="btn btn-lg btn-outline-warning btn-block" type="button">Sign in</a>
   </form>
 
 </body>
 
 </html>
-
-
-<?php
-// Home page
-?>

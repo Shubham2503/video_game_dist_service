@@ -6,16 +6,8 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
     exit;
 }
 
-//delete later////////
-$severname = "localhost";
-$username = "root";
-$pwd = "";
-$dbname = "gamedb";
-$conn = new mysqli($severname, $username, $pwd, $dbname);
-// Check connection
-if (!$conn) {
-    die("Connection failed: " . $conn->connect_error);
-}
+//DBMS CONNECTION////////
+require "../include/connect_db.php";
 ///////////////////////
 
 if($_SERVER["REQUEST_METHOD"] == "POST")
@@ -29,31 +21,29 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
   if(mysqli_num_rows($res) > 0)
   {
     $username = trim($_POST["username"]);    
+    if(strlen(trim($_POST["password"])) < 8)
+    {
+      $password_err = "Password must have atleast 8 characters.";
+      echo "<script>alert('$password_err')</script>";
+    } 
+    else
+    {
+      $password = trim($_POST["password"]);
+    }
   }
   else
   {
-    ///change this///////////////
-    $username_err = "No Such Username<br>";
-    echo $username_err;
+    $username_err = "No Such Username";
+    echo "<script>alert('$username_err')</script>";
   }
 
-  if(strlen(trim($_POST["password"])) < 8)
-  {
-    //////////change this
-    $password_err = "Password must have atleast 8 characters.<br>";
-    echo $password_err;
-  } 
-  else
-  {
-    $password = trim($_POST["password"]);
-  }
+  
   $row = mysqli_fetch_assoc($res);
 
-  if($row["password"] != $password)
+  if(empty($password_err) && $row["password"] != $password)
   {
-    ///////change this
-    $match_err = "incorrect";
-    echo "incorrect password<br>";
+    $match_err = "incorrect Password";
+    echo "<script>alert('$match_err')</script>";;
   }
    
 
@@ -70,7 +60,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
   else
   {
     ////change this
-    echo "Something went wrong<br>";
+    echo "database errr<br>";
   }
   mysqli_close($conn); 
 }
@@ -84,6 +74,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
     <title>Signin Template · Bootstrap</title>
     <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <style>
+      body{
+        background:  radial-gradient(#40404b, #111118) rgba(34,34,40,0.94);
+      }
       .bd-placeholder-img {
         font-size: 1.125rem;
         text-anchor: middle;
@@ -106,7 +99,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 
     <form class="form-signin" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" id="form">
       <img class="mb-4" src="../image/logo.png" alt="" width="72" height="72">
-      <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+      <h1 class="h3 mb-3 font-weight-normal" style="color: white;">Please sign in</h1>
       <label for="inputusername" class="sr-only">Email address</label>
       <input type="text" id="inputusername" name="username" class="form-control" placeholder="user" required autofocus>
       <label for="inputPassword" class="sr-only">Password</label>
@@ -114,7 +107,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 
 
       <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-      <a href="register.php" class="btn btn-lg btn-outline-secondary btn-block" type="button">Register</a>
+      <a href="register.php" class="btn btn-lg btn-outline-warning btn-block" type="button">Register</a>
       <p class="mt-5 mb-3 text-muted">&copy; 2020-2020</p>
     </form>
 

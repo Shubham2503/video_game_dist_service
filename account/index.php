@@ -1,4 +1,5 @@
 <?php
+require '../include/console_log.php';
 session_start();
 if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
     header("location: ../home/signin.php");
@@ -30,6 +31,28 @@ $fname = $row["fname"];
 $lname = $row["lname"];
 $username = $row["username"];
 $email = $row["email"];
+
+$user_game = array();
+$sql = "SELECT * FROM user_games WHERE userid = '$userid'";
+$res = mysqli_query($conn, $sql);
+
+while ($row = mysqli_fetch_assoc($res))
+    $user_game[] = $row['game_id'];
+
+
+$games = array();
+$sql = "SELECT * FROM games";
+$res = mysqli_query($conn, $sql);
+
+while ($row = mysqli_fetch_assoc($res)) {
+    $id = $row["game_id"];
+    $games[$id] = $row;
+}
+
+
+console_log($user_game);
+
+
 ?>
 
 <!doctype html>
@@ -61,31 +84,33 @@ $email = $row["email"];
 
 
 <body class="bg-light">
-<div class="row">
-        <div class="col-3">
-            <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab"
-                    aria-controls="v-pills-home" aria-selected="true">Home</a>
-                <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab"
-                    aria-controls="v-pills-profile" aria-selected="false">Profile</a>
-                <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab"
-                    aria-controls="v-pills-messages" aria-selected="false">Messages</a>
-                <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab"
-                    aria-controls="v-pills-settings" aria-selected="false">Settings</a>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="container">
+
+                <div class="py-5 text-center">
+                    <img class="d-block mx-auto mb-4" src="../image/logo.png" alt="" width="72" height="72">
+                    <h2>Account</h2>
+                    <p class="lead"></p>
+                </div>
             </div>
         </div>
-        <div class="col-9">
+    </div>
+    <div class="row">
+        <div class="col-1">
+        </div>
+        <div class="col-2">
+            <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Home</a>
+                <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Games</a>
+                <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">Messages</a>
+                <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">Settings</a>
+            </div>
+        </div>
+        <div class="col-8">
             <div class="tab-content" id="v-pills-tabContent">
-                <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel"
-                    aria-labelledby="v-pills-home-tab">
+                <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
                     <div class="container">
-
-                        <div class="py-5 text-center">
-                            <img class="d-block mx-auto mb-4" src="../image/logo.png" alt="" width="72" height="72">
-                            <h2>Account</h2>
-                            <p class="lead"></p>
-                        </div>
-                
                         <div class="col-md-12 order-md-1">
                             <form class="needs-validation" novalidate method="post" action="receipt.php">
                                 <div class="row">
@@ -96,7 +121,7 @@ $email = $row["email"];
                                             Valid first name is required.
                                         </div>
                                     </div>
-                
+
                                     <div class="col-md-6 mb-3">
                                         <label for="lastName">Last name</label>
                                         <input type="text" class="form-control" id="lastName" placeholder="" value="<?php echo $lname ?>" required>
@@ -105,7 +130,7 @@ $email = $row["email"];
                                         </div>
                                     </div>
                                 </div>
-                
+
                                 <div class="row">
                                     <div class="col-md-6 mb-3">
                                         <label for="username">Username</label>
@@ -119,7 +144,7 @@ $email = $row["email"];
                                             </div>
                                         </div>
                                     </div>
-                
+
                                     <div class="col-md-6 mb-3">
                                         <label for="email">Email</label>
                                         <input type="email" class="form-control" id="email" placeholder="you@example.com" value="<?php echo $email ?>" required>
@@ -128,9 +153,9 @@ $email = $row["email"];
                                         </div>
                                     </div>
                                 </div>
-                
+
                                 <div class="row">
-                
+
                                     <div class="col-md-6 mb-3">
                                         <label for="dob">DOB</label>
                                         <input type="date" class="form-control" id="dob" value="" required>
@@ -140,9 +165,9 @@ $email = $row["email"];
                                     </div>
                                 </div>
                                 <h4><label for="dob">Password</label></h4>
-                
+
                                 <div class="row">
-                
+
                                     <div class="col-md-6 mb-3">
                                         <label for="pass">Password</label>
                                         <input type="password" class="form-control" id="pass" value="" required>
@@ -150,7 +175,7 @@ $email = $row["email"];
                                             Please enter a valid password.
                                         </div>
                                     </div>
-                
+
                                     <div class="col-md-6 mb-3">
                                         <label for="c_pass">Confirm Password</label>
                                         <input type="password" class="form-control" id="c_pass" value="" required>
@@ -188,27 +213,44 @@ $email = $row["email"];
                             </div>
                           </div>
                         </div> -->
-                
+
                                 <hr class="mb-4">
                                 <button class="btn btn-primary btn-lg btn-block" name="update" type="submit">Update</button>
                             </form>
                         </div>
                     </div>
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
                 </div>
+
                 <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
-                    ... Proffile</div>
+                    <div class="container">
+
+                        <?php
+                        if (sizeof($user_game) == 0)
+                            echo "<h2>No Games yet !</h2>";
+                        else {
+                        ?>
+
+                            <table style="width:100%" id='tab'>
+                                <tr>
+                                    <th>Game</th>
+                                    <th>Published</th>
+                                    <th>Developer studio</th>
+                                </tr>
+                                <?php
+                                console_log($games);
+                                foreach ($user_game as $i) {
+                                    echo "<tr>";
+                                    echo "<td>" . $games[$i]['name'] . "</td><td>" . $games[$i]['year'] . "</td><td>" . $games[$i]['developer'] . "</td>";
+                                    echo "</tr>";
+                                }
+                                ?>
+                            </table>
+
+                        <?php
+                        }
+                        ?>
+                    </div>
+                </div>
                 <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
                     ...Mesasage</div>
                 <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
