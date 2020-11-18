@@ -1,0 +1,4 @@
+INSERT INTO `game_category` (`game_id`, `category`) VALUES ('3', 'cat1'),('4', 'cat1'),('5', 'cat1');
+INSERT INTO `games` (`game_id`, `name`, `price`, `year`, `developer`, `descrip`) VALUES ('3', 'Mario', '33', '2020-11-17', 'zainy ', 'Its a tradirional mario game.');
+INSERT INTO `games` (`game_id`, `name`, `price`, `year`, `developer`, `descrip`) VALUES ('4', 'Ben10', '50', '2019-11-17', 'Shende Productions', 'Its an omnitrix game.');
+INSERT INTO `games` (`game_id`, `name`, `price`, `year`, `developer`, `descrip`) VALUES ('5', 'Pokemon', '78', '2010-11-17', 'Shubham', 'Wanna catch them all.');
