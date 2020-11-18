@@ -1,37 +1,56 @@
 <?php
-    session_start();
-    if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
-        header("location: ../home/signin.php");
-        exit;
-    }
+require '../include/console_log.php';
+session_start();
+if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
+    header("location: ../home/signin.php");
+    exit;
+}
 
-    $userid = $_COOKIE["userid"];
+$userid = $_COOKIE["userid"];
 
-    //delete later////////
-    $severname = "localhost";
-    $username = "root";
-    $pwd = "";
-    $dbname = "gamedb";
-    $conn = new mysqli($severname, $username, $pwd, $dbname);
-    // Check connection
-    if (!$conn) {
-        die("Connection failed: " . $conn->connect_error);
-    }
-    ///////////////////////
-
-
-    $fname = $lname = $username = $email = $game_name = $game_price = "";
-
-    $sql = "SELECT * FROM users WHERE userid = '$userid'";
-    $res = mysqli_query($conn, $sql);
-    $row = mysqli_fetch_assoc($res);
-
-    $fname = $row["fname"];
-    $lname = $row["lname"];
-    $username = $row["username"];
-    $email = $row["email"];
+//delete later////////
+$severname = "localhost";
+$username = "root";
+$pwd = "";
+$dbname = "gamedb";
+$conn = new mysqli($severname, $username, $pwd, $dbname);
+// Check connection
+if (!$conn) {
+    die("Connection failed: " . $conn->connect_error);
+}
+///////////////////////
 
 
+$fname = $lname = $username = $email = $game_name = $game_price = "";
+
+$sql = "SELECT * FROM users WHERE userid = '$userid'";
+$res = mysqli_query($conn, $sql);
+$row = mysqli_fetch_assoc($res);
+
+$fname = $row["fname"];
+$lname = $row["lname"];
+$username = $row["username"];
+$email = $row["email"];
+
+$user_game = array();
+$sql = "SELECT * FROM user_games WHERE userid = '$userid'";
+$res = mysqli_query($conn, $sql);
+
+while ($row = mysqli_fetch_assoc($res))
+    $user_game[] = $row['game_id'];
+
+
+$games = array();
+$sql = "SELECT * FROM games";
+$res = mysqli_query($conn, $sql);
+
+while ($row = mysqli_fetch_assoc($res)) {
+    $id = $row["game_id"];
+    $games[$id] = $row;
+}
+
+
+console_log($user_game);
 
 
 ?>
@@ -83,7 +102,7 @@
         <div class="col-2">
             <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                 <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Home</a>
-                <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Profile</a>
+                <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Games</a>
                 <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">Messages</a>
                 <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">Settings</a>
             </div>
@@ -201,8 +220,27 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
-                    ... Proffile</div>
+                    <div class="container">
+
+                        <table style="width:100%">
+                            <tr>
+                                <th>Game</th>
+                                <th>Published</th>
+                                <th>Developer studio</th>
+                            </tr>
+                            <?php
+                            console_log($games);
+                            foreach ($user_game as $i) {
+                                echo "<tr>";
+                                echo "<td>" . $games[$i]['name'] . "</td><td>" . $games[$i]['year'] . "</td><td>" . $games[$i]['developer'] . "</td>";
+                                echo "</tr>";
+                            }
+                            ?>
+                        </table>
+                    </div>
+                </div>
                 <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
                     ...Mesasage</div>
                 <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
