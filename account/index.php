@@ -226,7 +226,7 @@ console_log($user_game);
 
                         <?php
                         if (sizeof($user_game) == 0)
-                            echo "<h2><b>No Games yet !</b></h2>";
+                            echo "<h2>No Games yet !</h2>";
                         else {
                         ?>
 
