@@ -6,16 +6,8 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
     exit;
 }
 
-//delete later////////
-$severname = "localhost";
-$username = "root";
-$pwd = "";
-$dbname = "gamedb";
-$conn = new mysqli($severname, $username, $pwd, $dbname);
-// Check connection
-if (!$conn) {
-    die("Connection failed: " . $conn->connect_error);
-}
+//DBMS CONNECTION////////
+require "../include/connect_db.php";
 ///////////////////////
 
 if($_SERVER["REQUEST_METHOD"] == "POST")
@@ -29,31 +21,29 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
   if(mysqli_num_rows($res) > 0)
   {
     $username = trim($_POST["username"]);    
+    if(strlen(trim($_POST["password"])) < 8)
+    {
+      $password_err = "Password must have atleast 8 characters.";
+      echo "<script>alert('$password_err')</script>";
+    } 
+    else
+    {
+      $password = trim($_POST["password"]);
+    }
   }
   else
   {
-    ///change this///////////////
-    $username_err = "No Such Username<br>";
-    echo $username_err;
+    $username_err = "No Such Username";
+    echo "<script>alert('$username_err')</script>";
   }
 
-  if(strlen(trim($_POST["password"])) < 8)
-  {
-    //////////change this
-    $password_err = "Password must have atleast 8 characters.<br>";
-    echo $password_err;
-  } 
-  else
-  {
-    $password = trim($_POST["password"]);
-  }
+  
   $row = mysqli_fetch_assoc($res);
 
-  if($row["password"] != $password)
+  if(empty($password_err) && $row["password"] != $password)
   {
-    ///////change this
-    $match_err = "incorrect";
-    echo "incorrect password<br>";
+    $match_err = "incorrect Password";
+    echo "<script>alert('$match_err')</script>";;
   }
    
 
@@ -70,7 +60,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
   else
   {
     ////change this
-    echo "Something went wrong<br>";
+    echo "database errr<br>";
   }
   mysqli_close($conn); 
 }
