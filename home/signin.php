@@ -2,7 +2,7 @@
 session_start();
  
 if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
-    header("location: home.php");
+    header("location: ../store/index.php");
     exit;
 }
 
@@ -55,7 +55,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
     $_SESSION["id"] = $id;
     $_SESSION["username"] = $username;      
     setcookie("userid", $row["userid"], time() + (86400 * 30), "/");
-    header("location: home.php");
+    header("location: ../store/index.php");
   }
   else
   {
