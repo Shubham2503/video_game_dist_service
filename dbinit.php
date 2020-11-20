@@ -53,7 +53,7 @@ $sql[] = "CREATE TABLE users (
         fname varchar(30) NOT NULL, 
         lname varchar(30) NOT NULL
     )";
-$sql[] = "CREATE TABLE `gamedb`.`games` ( `game_id` INT NOT NULL AUTO_INCREMENT , `name` VARCHAR(200) NOT NULL , `price` INT NOT NULL , `year` YEAR NOT NULL , `developer` VARCHAR(200) NOT NULL , `descrip` VARCHAR(500) NOT NULL , PRIMARY KEY (`game_id`)) ENGINE = InnoDB;";
+$sql[] = "CREATE TABLE `gamedb`.`games` ( `game_id` INT NOT NULL AUTO_INCREMENT , `name` VARCHAR(200) NOT NULL , `price` INT NOT NULL , `year` YEAR NOT NULL , `developer` VARCHAR(200) NOT NULL , `descrip` VARCHAR(500) NOT NULL, `descrip2` VARCHAR(500) NOT NULL, `descrip3` VARCHAR(500) NOT NULL , PRIMARY KEY (`game_id`)) ENGINE = InnoDB;";
 $sql[] = "CREATE TABLE `gamedb`.`game_category` ( `game_id` INT NOT NULL , `category` VARCHAR(100) NOT NULL ) ENGINE = InnoDB;";
 $sql[] = "CREATE TABLE `gamedb`.`user_games` ( `userid` INT NOT NULL , `game_id` INT NOT NULL , `card_no` INT NOT NULL , `datetime` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ) ENGINE = InnoDB;";
 
@@ -69,11 +69,24 @@ $sql1 = array();
 
 $sql1[] = "INSERT INTO `users` ( `username`, `password`, `email`, `age`, `fname`, `lname`) VALUES ('admin', '12345678', 'temp@temp.temp', '20', 'admin', 'admin')";
 
-$sql1[] = "INSERT INTO `games` (`game_id`, `name`, `price`, `year`, `developer`, `descrip`) VALUES ('1', 'Minecraft', '26', '2010', ' Mojang Studios', 'With new games, new updates, and new ways to play, join one of the biggest communities in gaming and start crafting today!');";
-$sql1[] = "INSERT INTO `games` (`game_id`, `name`, `price`, `year`, `developer`, `descrip`) VALUES ('2', 'Watch Dogs: Legion', '87', '2020', 'Ubisoft Toronto', 'Build a resistance');";
-$sql1[] = "INSERT INTO `games` VALUES ('3', 'Fortnite', '50', '2017', 'Epic Games', 'Fortnite is the free, always evolving, multiplayer game where you and your friends battle to be the last one standing or collaborate to create your dream Fortnite world. Play both Battle Royale and Fortnite Creative for FREE. Download now and jump into the action. This download also gives you a path to purchase the Save the World co-op PvE campaign.');";
-$sql1[] = "INSERT INTO `games` VALUES ('4', 'HITMAN 3', '20', '2021', 'IO Interactive A/S', 'Death Awaits. Agent 47 returns in HITMAN 3, the dramatic conclusion to the World of Assassination trilogy.');";
-$sql1[] = "INSERT INTO `games` VALUES ('5', 'Rocket League', '10', '2021', 'Psyonix LLC', 'Hit the field by yourself or with friends in 1v1, 2v2, and 3v3 Online Modes, or enjoy Extra Modes like Rumble, Snow Day, or Hoops. Unlock items in Rocket Pass, climb the Competitive Ranks, compete in Competitive Tournaments, complete Challenges, enjoy cross-platform progression and more! The field is waiting. Take your shot! ');";
+$sql1[] = "INSERT INTO `games` (`game_id`, `name`, `price`, `year`, `developer`, `descrip`, `descrip2`, `descrip3`) VALUES ('1', 'Minecraft', '26', '2010', ' Mojang Studios', 
+'Be resourceful : Get crafty and use the surrounding environment to gather building materials—see how breaking down trees can help you create something new.'
+,'Survive the night : It’s always best to avoid the unpredictable by distancing yourself from wandering mobs—you never know what’ll happen if they get too close!'
+,'Build something amazing : Discover all the versatile ways dust from the Redstone ore can be used to enhance your creations, bring them to life, or give them some bang.');";
+$sql1[] = "INSERT INTO `games` VALUES ('2', 'Watch Dogs: Legion', '87', '2020', 'Ubisoft Toronto', 
+'Build a resistance from virtually anyone you see as you hack, infiltrate, and fight to take back a near-future London that is facing its downfall. Welcome to the Resistance.'
+,'Recruit and play as anyone in the city. Everyone you see has a unique backstory, personality, and skill set. Hack armed drones, deploy spider-bots, and take down enemies using an Augmented Reality Cloak.'
+,'Take your recruits online and team up with your friends as you complete missions and challenging endgame content.');";
+$sql1[] = "INSERT INTO `games` VALUES ('3', 'Fortnite', '50', '2017', 'Epic Games', 
+'Fortnite is the free, always evolving, multiplayer game where you and your friends battle to be the last one standing or collaborate to create your dream Fortnite world. Play both Battle Royale and Fortnite Creative for FREE. Download now and jump into the action. This download also gives you a path to purchase the Save the World co-op PvE campaign.'
+,'Fortnite Battle Royale is a player-versus-player game for up to 100 players, allowing one to play alone, in a duo, or in a squad usually consisting of three or four players.'
+,'Weaponless players airdrop from a Battle Bus that crosses the games map. The last player, duo, or squad remaining is the winner.');";
+$sql1[] = "INSERT INTO `games` VALUES ('4', 'HITMAN 3', '20', '2021', 'IO Interactive A/S', 'Agent 47 returns as a ruthless professional in HITMAN 3 for the most important contracts of his entire career. Embark on an intimate journey of darkness and hope in the dramatic conclusion to the World of Assassination trilogy. Death awaits.'
+,'Experience a globetrotting adventure and visit exotic locations that are meticulously detailed and packed full of creative opportunities. IOI’s award-winning Glacier technology powers HITMAN 3’s tactile and immersive game world to offer unparalleled player choice and replayability.'
+,'HITMAN 3 is the best place to play every game in the World of Assassination trilogy. All locations from HITMAN 1 and HITMAN 2 can be imported and played within HITMAN 3 at no additional cost for existing owners – plus progression from HITMAN 2 is directly carried over into HITMAN 3 at launch.');";
+$sql1[] = "INSERT INTO `games` VALUES ('5', 'Rocket League', '10', '2021', 'Psyonix LLC', 'This is Rocket League! Welcome to the high-powered hybrid of arcade-style soccer and vehicular mayhem! Customize your car, hit the field, and compete in one of the most critically acclaimed sports games of all time!'
+,'From Haunted Hallows to Frosty Fest, enjoy limited time events that feature festive in-game items that can be unlocked by playing online! Keep on the lookout for limited time modes and arenas.'
+,'Make your car your own with nearly endless customization possibilities! Get in-game items for completing challenges, browse the item shop, or build blueprints for premium content for your car.');";
 
 $sql1[] = "INSERT INTO `game_category` (`game_id`, `category`) VALUES ('1', 'cat1')";
 $sql1[] = "INSERT INTO `game_category` (`game_id`, `category`) VALUES ('1', 'cat2')";
