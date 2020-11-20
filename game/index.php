@@ -11,8 +11,8 @@ if (isset($_COOKIE)) {
 
 // if($_SERVER["REQUEST_METHOD"] == "POST")
 if (1) {
-    if(!isset($_GET['game_id']))
-    header('location: ../store/index.php');
+    if (!isset($_GET['game_id']))
+        header('location: ../store/index.php');
     $game_id = $_GET['game_id'];
 
     $sql = "SELECT * FROM games WHERE game_id = $game_id";
@@ -217,7 +217,24 @@ mysqli_close($conn);
                     </table>
                 </div>
             </div>
-            <hr>
+
+            <!-- START THE FEATURETTES -->
+            <hr class="featurette-divider">
+
+            <div class="row featurette">
+                <div class="col-md-12">
+                    <!-- <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="1000" height="500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 500x500">
+                        <title>Placeholder</title>
+                        <rect width="100%" height="100%" fill="#eee" /><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text>
+                    </svg> -->
+                    <iframe width="1000" height="500" src="https://www.youtube.com/embed/oQOSJkBYzrg?autoplay=1&mute=1">
+                    </iframe>
+                </div>
+            </div>
+
+            <hr class="featurette-divider">
+
+            <!-- /END THE FEATURETTES -->
 
             <!-- /.row -->
             <div class="row">
