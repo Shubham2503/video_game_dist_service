@@ -37,7 +37,7 @@ $sql = "SELECT * FROM user_games WHERE userid = '$userid'";
 $res = mysqli_query($conn, $sql);
 
 while ($row = mysqli_fetch_assoc($res))
-    $user_game[] = $row['game_id'];
+    $user_game[] = array($row['game_id'],$row['datetime']);
 
 
 $games = array();
@@ -112,7 +112,7 @@ console_log($user_game);
             <div class="container">
 
                 <div class="py-5 text-center">
-                    <a href="../home/home.php"><img class="d-block mx-auto mb-4" src="../image/logo.png" alt="" width="72" height="72"></a>
+                    <a href="../store/index.php"><img class="d-block mx-auto mb-4" src="../image/logo.png" alt="" width="72" height="72"></a>
                     <h2 style="color: white;">Account</h2>
                     <p class="lead"></p>
                 </div>
@@ -258,12 +258,13 @@ console_log($user_game);
                                     <th style="color: #ffc107;">Game</th>
                                     <th style="color: #ffc107;">Published</th>
                                     <th style="color: #ffc107;">Developer studio</th>
+                                    <th style="color: #ffc107;">Date - Time</th>
                                 </tr>
                                 <?php
                                 console_log($games);
                                 foreach ($user_game as $i) {
                                     echo "<tr>";
-                                    echo "<td>" . $games[$i]['name'] . "</td><td>" . $games[$i]['year'] . "</td><td>" . $games[$i]['developer'] . "</td>";
+                                    echo "<td>" . $games[$i[0]]['name'] . "</td><td>" . $games[$i[0]]['year'] . "</td><td>" . $games[$i[0]]['developer'] . "</td><td>" . $i[1] . "</td>";
                                     echo "</tr>";
                                 }
                                 ?>
