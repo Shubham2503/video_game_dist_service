@@ -78,6 +78,29 @@ console_log($user_game);
                 font-size: 3.5rem;
             }
         }
+
+        body {
+            background: radial-gradient(#40404b, #111118) rgba(34, 34, 40, 0.94);
+            color: white;
+        }
+
+        a {
+            color: #17a2b8;
+            text-decoration: none;
+            background-color: transparent;
+        }
+
+        .nav-pills .nav-link.active,
+        .nav-pills .show>.nav-link {
+            color: #fff;
+            background-color: #17a2b8;
+        }
+
+        a:hover {
+            color: #ffffff;
+            text-decoration: underline;
+        }
+
     </style>
     <link href="form-validation.css" rel="stylesheet">
 </head>
@@ -89,8 +112,8 @@ console_log($user_game);
             <div class="container">
 
                 <div class="py-5 text-center">
-                    <img class="d-block mx-auto mb-4" src="../image/logo.png" alt="" width="72" height="72">
-                    <h2>Account</h2>
+                    <a href="../home/home.php"><img class="d-block mx-auto mb-4" src="../image/logo.png" alt="" width="72" height="72"></a>
+                    <h2 style="color: white;">Account</h2>
                     <p class="lead"></p>
                 </div>
             </div>
@@ -104,7 +127,7 @@ console_log($user_game);
                 <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Home</a>
                 <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Games</a>
                 <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">Messages</a>
-                <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">Settings</a>
+                <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">Sign out</a>
             </div>
         </div>
         <div class="col-8">
@@ -215,7 +238,7 @@ console_log($user_game);
                         </div> -->
 
                                 <hr class="mb-4">
-                                <button class="btn btn-primary btn-lg btn-block" name="update" type="submit">Update</button>
+                                <button class="btn btn-outline-warning btn-lg btn-block" name="update" type="submit">Update</button>
                             </form>
                         </div>
                     </div>
@@ -232,9 +255,9 @@ console_log($user_game);
 
                             <table style="width:100%" id='tab'>
                                 <tr>
-                                    <th>Game</th>
-                                    <th>Published</th>
-                                    <th>Developer studio</th>
+                                    <th style="color: #ffc107;">Game</th>
+                                    <th style="color: #ffc107;">Published</th>
+                                    <th style="color: #ffc107;">Developer studio</th>
                                 </tr>
                                 <?php
                                 console_log($games);
@@ -254,14 +277,20 @@ console_log($user_game);
                 <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
                     ...Mesasage</div>
                 <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
-                    ...</div>
+                    <div class="row">
+                        <div class="col-md-5" >
+                            <a href="../home/logout.php" class="btn btn-outline-warning btn-lg btn-block" id="signout">Sign out</a>
+                        </div>
+                    </div>
+
+                </div>
             </div>
         </div>
     </div>
 
 
     <footer class="my-5 pt-5 text-muted text-center text-small">
-        <p class="mb-1">&copy; 2017-2020 Company Name</p>
+        <p class="mb-1">&copy; 2020-2020</p>
         <!-- <ul class="list-inline">
       <li class="list-inline-item"><a href="#">Privacy</a></li>
       <li class="list-inline-item"><a href="#">Terms</a></li>
