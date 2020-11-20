@@ -11,6 +11,8 @@ if (isset($_COOKIE)) {
 
 // if($_SERVER["REQUEST_METHOD"] == "POST")
 if (1) {
+    if(!isset($_GET['game_id']))
+    header('location: ../store/index.php');
     $game_id = $_GET['game_id'];
 
     $sql = "SELECT * FROM games WHERE game_id = $game_id";
