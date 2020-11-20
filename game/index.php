@@ -69,7 +69,7 @@ mysqli_close($conn);
             }
         }
     </style>
-    <link href="carousel.css" rel="stylesheet">
+    <link href="style1.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 
