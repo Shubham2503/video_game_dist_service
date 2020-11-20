@@ -264,7 +264,7 @@ console_log($user_game);
                                 console_log($games);
                                 foreach ($user_game as $i) {
                                     echo "<tr>";
-                                    echo "<td>" . $games[$i[0]]['name'] . "</td><td>" . $games[$i[0]]['year'] . "</td><td>" . $games[$i[0]]['developer'] . "</td><td>" . $i[1] . "</td>";
+                                    echo "<td><a href='../game/index.php?game_id=$i[0]'>" .$games[$i[0]]['name'] . "</a></td><td>" . $games[$i[0]]['year'] . "</td><td>" . $games[$i[0]]['developer'] . "</td><td>" . $i[1] . "</td>";
                                     echo "</tr>";
                                 }
                                 ?>
