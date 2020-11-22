@@ -3,7 +3,7 @@ require '../include/connect_db.php';
 
 
 
-//              SETTING VARIABLES.............
+//SETTING VARIABLES.............
 if (isset($_COOKIE)) {
     $userid = $_COOKIE['userid'];
 }
@@ -37,10 +37,11 @@ $image2 = "<img class='bd-placeholder-img' width='100%' height='100%' src='../im
 $image3 = "<img class='bd-placeholder-img' width='100%' height='100%' src='../image/$game_id/3.jpg'> ";
 $image4 = "<img class='bd-placeholder-img' width='100%' height='100%' src='../image/$game_id/4.jpg'> ";
 $image5 = "<img class='bd-placeholder-img' width='100%' height='100%' src='../image/$game_id/5.jpg'> ";
+$vid = "https://www.youtube.com/embed/$vid_id/?autoplay=1&mute=1&controls=0&loop=1";
 
 
 
-//                         BUTTON FEATURES ......................
+//BUTTON FEATURES ......................
 $btn_setter = "";
 $sql = "SELECT userid FROM user_games WHERE game_id = $game_id and userid = $userid";
 $result = mysqli_query($conn, $sql);
@@ -79,29 +80,22 @@ mysqli_close($conn);
 </head>
 
 <body>
-    <header>
-        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <a class="navbar-brand" href="../store/index.php">
+            <img src="../image/logo.png" width="40" height="40" alt="home" loading="lazy">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-            <a class="navbar-brand" href="../store/index.php">Home</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="navbarCollapse">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Link</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-    </header>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="../account/index.php">Account <span class="sr-only">(current)</span></a>
+                </li>
+            </ul>
+        </div>
+    </nav>
 
 
     <main role="main">
@@ -228,10 +222,10 @@ mysqli_close($conn);
                         <title>Placeholder</title>
                         <rect width="100%" height="100%" fill="#eee" /><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text>
                     </svg> -->
-                    <h3>Whatch Trailer Now !!! </h3>
+                    <h3><?php echo $name ?></h3>
                     <hr>
 
-                    <iframe width="1000" height="500" src="<?php echo $vid_id; ?>">
+                    <iframe width="1000" height="500" src=<?php echo $vid ?>>
                     </iframe>
 
                 </div>
