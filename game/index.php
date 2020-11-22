@@ -26,6 +26,7 @@ if (1) {
         $name = $row["name"];
         $price = $row['price'];
         $year = $row['year'];
+        $vid_id = $row['vid_id'];
         $developer = $row['developer'];
     } else {
         echo "Something went wrong!!!";
@@ -219,7 +220,7 @@ mysqli_close($conn);
             </div>
 
             <!-- START THE FEATURETTES -->
-            <hr class="featurette-divider">
+            <hr>
 
             <div class="row featurette">
                 <div class="col-md-12">
@@ -227,8 +228,12 @@ mysqli_close($conn);
                         <title>Placeholder</title>
                         <rect width="100%" height="100%" fill="#eee" /><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text>
                     </svg> -->
-                    <iframe width="1000" height="500" src="https://www.youtube.com/embed/oQOSJkBYzrg?autoplay=1&mute=1">
+                    <h3>Whatch Trailer Now !!! </h3>
+                    <hr>
+
+                    <iframe width="1000" height="500" src="<?php echo $vid_id; ?>">
                     </iframe>
+
                 </div>
             </div>
 
