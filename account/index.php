@@ -37,7 +37,7 @@ $sql = "SELECT * FROM user_games WHERE userid = '$userid'";
 $res = mysqli_query($conn, $sql);
 
 while ($row = mysqli_fetch_assoc($res))
-    $user_game[] = $row['game_id'];
+    $user_game[] = array($row['game_id'], $row['datetime']);
 
 
 $games = array();
@@ -105,7 +105,8 @@ console_log($user_game);
             box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
         }
 
-        .form-control, .input-group-text {
+        .form-control,
+        .input-group-text {
             color: #c4cacf;
             background-color: #14213D;
             background-clip: padding-box;
@@ -268,12 +269,13 @@ console_log($user_game);
                                     <th style="color: #ffc107;">Game</th>
                                     <th style="color: #ffc107;">Published</th>
                                     <th style="color: #ffc107;">Developer studio</th>
+                                    <th style="color: #ffc107;">Date - Time</th>
                                 </tr>
                                 <?php
                                 console_log($games);
                                 foreach ($user_game as $i) {
                                     echo "<tr>";
-                                    echo "<td>" . $games[$i]['name'] . "</td><td>" . $games[$i]['year'] . "</td><td>" . $games[$i]['developer'] . "</td>";
+                                    echo "<td><a href='../game/index.php?game_id=$i[0]'>" . $games[$i[0]]['name'] . "</a></td><td>" . $games[$i[0]]['year'] . "</td><td>" . $games[$i[0]]['developer'] . "</td><td>" . $i[1] . "</td>";
                                     echo "</tr>";
                                 }
                                 ?>
