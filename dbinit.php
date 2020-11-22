@@ -90,10 +90,19 @@ $sql1[] = "INSERT INTO `games` VALUES ('5', 'Rocket League', '10', '2021', 'Psyo
 ,'From Haunted Hallows to Frosty Fest, enjoy limited time events that feature festive in-game items that can be unlocked by playing online! Keep on the lookout for limited time modes and arenas.'
 ,'Make your car your own with nearly endless customization possibilities! Get in-game items for completing challenges, browse the item shop, or build blueprints for premium content for your car.');";
 
-$sql1[] = "INSERT INTO `game_category` (`game_id`, `category`) VALUES ('1', 'cat1')";
-$sql1[] = "INSERT INTO `game_category` (`game_id`, `category`) VALUES ('1', 'cat2')";
-$sql1[] = "INSERT INTO `game_category` (`game_id`, `category`) VALUES ('2', 'cat1')";
-$sql1[] = "INSERT INTO `game_category` (`game_id`, `category`) VALUES ('2', 'cat3')";
+$sql1[] = "INSERT INTO `game_category` (`game_id`, `category`) VALUES ('1', 'Top Seller')";
+$sql1[] = "INSERT INTO `game_category` (`game_id`, `category`) VALUES ('1', 'Co-Op')";
+$sql1[] = "INSERT INTO `game_category` (`game_id`, `category`) VALUES ('2', 'New Releases')";
+$sql1[] = "INSERT INTO `game_category` (`game_id`, `category`) VALUES ('2', 'Co-Op')";
+$sql1[] = "INSERT INTO `game_category` (`game_id`, `category`) VALUES ('2', 'shooter')";
+$sql1[] = "INSERT INTO `game_category` (`game_id`, `category`) VALUES ('3', 'Top Seller')";
+$sql1[] = "INSERT INTO `game_category` (`game_id`, `category`) VALUES ('3', 'Co-Op')";
+$sql1[] = "INSERT INTO `game_category` (`game_id`, `category`) VALUES ('3', 'Shooter')";
+$sql1[] = "INSERT INTO `game_category` (`game_id`, `category`) VALUES ('4', 'Shooter')";
+$sql1[] = "INSERT INTO `game_category` (`game_id`, `category`) VALUES ('4', 'Top Seller')";
+$sql1[] = "INSERT INTO `game_category` (`game_id`, `category`) VALUES ('4', 'Action')";
+$sql1[] = "INSERT INTO `game_category` (`game_id`, `category`) VALUES ('5', 'Top Seller')";
+$sql1[] = "INSERT INTO `game_category` (`game_id`, `category`) VALUES ('5', 'Co-Op')";
 
 foreach ($sql1 as $query) {
     if (mysqli_query($conn, $query)) {

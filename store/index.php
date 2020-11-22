@@ -31,7 +31,7 @@ while ($row = mysqli_fetch_assoc($result)) {
     $game_id = $row["game_id"];
     $category = $row["category"];
 
-    array_push($game_cat[$category], $game_id);
+    $game_cat[$category][] = $game_id;
 }
 console_log($game_cat);
 
