@@ -69,7 +69,7 @@ $sql1 = array();
 
 $sql1[] = "INSERT INTO `users` ( `username`, `password`, `email`, `age`, `fname`, `lname`) VALUES ('admin', '12345678', 'temp@temp.temp', '20', 'admin', 'admin')";
 
-$sql1[] = "INSERT INTO `games` (`game_id`, `name`, `price`, `year`, `developer`,`vid_id`, `descrip`, `descrip2`, `descrip3`) VALUES ('1', 'Minecraft', '26', '2010', ' Mojang Studios', 'MmB9b5njVbA',
+$sql1[] = "INSERT INTO `games` (`game_id`, `name`, `price`, `year`, `developer`,`vid_id`, `descrip`, `descrip2`, `descrip3`) VALUES ('1', 'Minecraft', '26', '2010', ' Mojang Studios', 'oQOSJkBYzrg',
 'Be resourceful : Get crafty and use the surrounding environment to gather building materials—see how breaking down trees can help you create something new.'
 ,'Survive the night : It’s always best to avoid the unpredictable by distancing yourself from wandering mobs—you never know what’ll happen if they get too close!'
 ,'Build something amazing : Discover all the versatile ways dust from the Redstone ore can be used to enhance your creations, bring them to life, or give them some bang.');";
