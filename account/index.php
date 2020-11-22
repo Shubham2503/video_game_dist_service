@@ -112,6 +112,9 @@ console_log($user_game);
             background-clip: padding-box;
             border: 1px solid #14213D;
         }
+        .row{
+            width: 100%;
+        }
     </style>
     <link href="form-validation.css" rel="stylesheet">
 </head>
