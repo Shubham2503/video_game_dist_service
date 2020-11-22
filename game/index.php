@@ -74,6 +74,41 @@ mysqli_close($conn);
                 font-size: 3.5rem;
             }
         }
+
+        .bg-dark {
+            background-color: #14213D !important;
+        }
+
+        body {
+            background-color: black;
+        }
+
+        .btn-outline-success {
+            color: #FCA311;
+            border-color: #FCA311;
+        }
+
+        .btn-outline-success:hover {
+            background-color: #FCA311 !important;
+            color: black;
+            border-color: #FCA311;
+        }
+
+        input {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        }
+
+        .form-control,
+        .input-group-text {
+            color: #E5E5E5;
+            background-color: #1f3460;
+            background-clip: padding-box;
+            border: 1px solid #1f3460;
+        }
+
+        .card {
+            background-color: #000;
+        }
     </style>
     <link href="style1.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
@@ -90,6 +125,9 @@ mysqli_close($conn);
 
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="../store/index.php">Store <span class="sr-only">(current)</span></a>
+                </li>
                 <li class="nav-item active">
                     <a class="nav-link" href="../account/index.php">Account <span class="sr-only">(current)</span></a>
                 </li>
@@ -165,11 +203,11 @@ mysqli_close($conn);
             <div class="row">
 
                 <div class="col-lg-4">
-                    <h2><?php echo "$name"; ?></h2>
+                    <h2 style="color: white;"><?php echo "$name"; ?></h2>
                     <p>
                         <!-- /////////////////button here//// -->
                         <form method="POST" action="../transaction/index.php">
-                            <button <?php echo $btn_setter  ?> class="btn btn-lg btn-primary" name="game_id" value="<?php echo $game_id; ?>">
+                            <button <?php echo $btn_setter  ?> class="btn btn-lg btn-outline-warning" name="game_id" value="<?php echo $game_id; ?>">
 
                                 <?php
                                 if ($btn_setter == "disabled")
@@ -184,12 +222,12 @@ mysqli_close($conn);
 
                 <div class="col-lg-8">
                     <table style="width:100%" id='tab'>
-                        <tr>
+                        <tr >
                             <th>Developer</th>
                             <th>Published</th>
                             <th>Price</th>
                         </tr>
-                        <tr>
+                        <tr style="color: white;">
                             <td><?php echo "$developer"; ?></td>
                             <td><?php echo "$year"; ?></td>
                             <td><?php echo "$price"; ?></td>
@@ -198,15 +236,15 @@ mysqli_close($conn);
                     <hr>
                     <table style="width:100%;" id='tab'>
                         <tr>
-                            <th>Description</th>
+                            <th >Description</th>
                         </tr>
-                        <tr style="text-align: left;">
+                        <tr style="text-align: left; color: white;" >
                             <td><?php echo "$descrip"; ?></td>
                         </tr>
-                        <tr style="text-align: left;">
+                        <tr style="text-align: left; color: white;">
                             <td><?php echo "$descrip2"; ?></td>
                         </tr>
-                        <tr style="text-align: left;">
+                        <tr style="text-align: left; color: white;">
                             <td><?php echo "$descrip3"; ?></td>
                         </tr>
                     </table>
@@ -222,10 +260,10 @@ mysqli_close($conn);
                         <title>Placeholder</title>
                         <rect width="100%" height="100%" fill="#eee" /><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text>
                     </svg> -->
-                    <h3><?php echo $name ?></h3>
+                    <h3 style="color: #FCA311;"><?php echo $name ?></h3>
                     <hr>
 
-                    <iframe width="1000" height="500" src=<?php echo $vid ?>>
+                    <iframe width="1000" height="500" src=<?php echo $vid ?> style="border: 0px solid black">
                     </iframe>
 
                 </div>
