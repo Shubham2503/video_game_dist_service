@@ -10,21 +10,49 @@
     if(!empty($key))
     {
         $key = '%'.strtolower($key).'%';
-        $sql = "SELECT DISTINCT game_id, name FROM games NATURAL JOIN game_category WHERE lower(name) LIKE '$key' OR lower(year) LIKE '$key' OR lower(developer) LIKE '$key' OR lower(descrip) LIKE '$key' OR lower(category) LIKE '$key' ";
+        $sql = "SELECT DISTINCT game_id, name,descrip,year,price,developer FROM games NATURAL JOIN game_category WHERE lower(name) LIKE '$key' OR lower(year) LIKE '$key' OR lower(developer) LIKE '$key' OR lower(descrip) LIKE '$key' OR lower(category) LIKE '$key' ";
         $res = mysqli_query($conn, $sql);
-
+        $content = "<h2>$category</h2>
+  <div class='content'>";
+        $count = 0;
         if(mysqli_num_rows($res) > 0)
         {
-            while ($row = mysqli_fetch_row($res)) 
+            while ($row = mysqli_fetch_assoc($res)) 
             {
-                $out = "<a href='../game/index.php?game_id=$row[0]'>$row[1]</a><br>";
-                echo $out;
+
+                if($count == 4)
+                {
+                    $content .= "</div><div class='content'>";
+                    $count = 0;
+                }
+                //$out = "<a href='../game/index.php?game_id=$row[0]'>$row[1]</a><br>";
+               // echo $out;
+                $id = $row['game_id'];
+                $name = $row['name'];
+                $descrip = $row['descrip'];
+                $year = $row['year'];
+                $price = $row['price'];
+                $dev = $row['developer'];
+               
+                $content .= "
+                <div class='card' style='height:auto'>
+              <img class='card-img-top img-fluid' src='../image/$id/1.jpg' alt='Card image cap'>
+              <div class='card-body' style= 'padding: 9px;'>
+                <h5 class='card-title' style = 'margin-bottom:0; font-size: 1rem'>$name</h5>
+                <footer class='blockquote-footer'>by <cite title='Source Title'>$dev</cite></footer>
+                <p class='card-text' style = 'margin-bottom:0; margin-top:10px '>$ $price</p>
+                <a href='../game/index.php?game_id=$id' class='btn btn-primary'>Buy</a>
+              </div>
+            </div>
+                       ";
+                    $count++;
             }
         }
         else
         {
             echo "no results<br>";
         }
+        $content .= '</div>';
 
         mysqli_close($conn);
     }
@@ -39,7 +67,10 @@
     <title>search</title>
     <meta charset="utf-8">
     <title>Store</title>
-    <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet"> -->
+    <link rel="stylesheet" href="card.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
 </head>
 <body>
         <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
@@ -64,6 +95,11 @@
         </nav>
 
     <main role="main">
+    <?php echo $content ?>
     </main>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
 </body>
 </html>

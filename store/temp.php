@@ -31,7 +31,7 @@ while ($row = mysqli_fetch_assoc($result)) {
   $game_id = $row["game_id"];
   $category = $row["category"];
 
-  array_push($game_cat[$category], $game_id);
+  $game_cat[$category][] = $game_id;
 }
 console_log($game_cat);
 
@@ -52,8 +52,12 @@ console_log($game_cat);
 $content = array();
 foreach ($game_cat as $category => $game_list) {
 
-  $content[$category] = "";
+  $content[$category] = "<h2>$category</h2>
+  <div class='content'>";
+  $count = 0;
   foreach ($game_list as $game_id) {
+    if ($count == 4)
+      break;
     $sql = "SELECT * FROM games where game_id = $game_id";
     $res = mysqli_query($conn, $sql);
     $row = mysqli_fetch_assoc($res);
@@ -62,18 +66,22 @@ foreach ($game_cat as $category => $game_list) {
     $name = $row['name'];
     $descrip = $row['descrip'];
     $year = $row['year'];
-
+    $price = $row['price'];
+    $dev = $row['developer'];
+    $count++;
     $content[$category] .= "
-    <div class='card' style='width: 18rem;'>
+    <div class='card' style='height:auto'>
   <img class='card-img-top img-fluid' src='../image/$id/1.jpg' alt='Card image cap'>
-  <div class='card-body'>
-    <h5 class='card-title'>$category</h5>
-    <p class='card-text'>$descrip</p>
-    <a href='#' class='btn btn-primary'>Go somewhere</a>
+  <div class='card-body' style= 'padding: 9px;'>
+    <h5 class='card-title' style = 'margin-bottom:0; font-size: 1rem'>$name</h5>
+    <footer class='blockquote-footer'>by <cite title='Source Title'>$dev</cite></footer>
+    <p class='card-text' style = 'margin-bottom:0; margin-top:10px '>$ $price</p>
+    <a href='../game/index.php?game_id=$id' class='btn btn-primary'>Buy</a>
   </div>
 </div>
            ";
   }
+  $content[$category] .= '</div>';
 }
 
 // <div class='card'>
@@ -85,14 +93,14 @@ foreach ($game_cat as $category => $game_list) {
 //     <div>
 //         <div class='release_date'>$year <span></span></div>
 //         <div class='movie_gens'>$category</div>
-       
+
 //         <p class='overview'>$descrip</p>
 //         <a target='_blank' href='../game/index.php?game_id=$id' class='button'>BUY</a>
 //     </div>
 // </div>
 
 // </div>
-console_log($content['cat1']);
+console_log($content['Co-Op']);
 
 
 
@@ -117,13 +125,14 @@ console_log($content['cat1']);
   <title>Document</title>
   <link rel="stylesheet" href="card.css">
 </head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
 <body>
   <button id="btnFlipHover">flip or hover</button>
 
-  <div class="content">
-    <h1 class="heading">Movies-</h1>
-    <p class="description">Hover over a Movie to flip it.
+  <div class="container">
+    <h1 class="heading">Games</h1>
+    <p class="description">Excusive Games availabel....
 
     </p>
     <!--  
@@ -140,8 +149,8 @@ console_log($content['cat1']);
       </div>
     </div>
   </a> -->
-    <?php echo $content['cat1']; ?>
-   
+
+
     <!-- <a class="card" href="#!">
     <div class="front" style="background-image: url(//source.unsplash.com/300x402);">
       <p>Lorem ipsum dolor sit amet consectetur adipisi.</p>
@@ -155,11 +164,23 @@ console_log($content['cat1']);
     </div>
   </a> -->
 
+
+    <?php 
+      foreach($cat as $c)
+      {
+        echo $content[$c];
+      }
+    ?>
+    
+
+
   </div>
+  </div>
+
   <!-- <script src="card.js"></script> -->
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
 
 </html>
