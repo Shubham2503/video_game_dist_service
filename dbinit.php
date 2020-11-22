@@ -96,25 +96,65 @@ $sql1[] = "INSERT INTO `games` VALUES ('6', 'Rogue Company', '32', '2020', 'Hi-R
 $sql1[] = "INSERT INTO `games` VALUES ('7', 'GTA V', '50', '2015', 'Rockstar Games', 'cwLbCWDntVc',
 'When a young street hustler, a retired bank robber and a terrifying psychopath land themselves in trouble, they must pull off a series of dangerous heists to survive in a city in which they can trust nobody, least of all each other.'
 ,'Discover an ever-evolving world of choices and ways to play as you climb the criminal ranks of Los Santos and Blaine County in the ultimate shared Online experience.'
-,'Rogue Company features a range of playable characters, referred to as Rogues. The game features objective-based game modes and various maps.');";
+,'Launch business ventures from your Maze Bank West Executive Office, research powerful weapons technology from your underground Gunrunning Bunker and use your Counterfeit Cash Factory to start a lucrative counterfeiting operation.');";
+
+// $sql1[] = "INSERT INTO `game_category` (`game_id`, `category`) VALUES ('1', 'Top Seller')";
+// $sql1[] = "INSERT INTO `game_category` (`game_id`, `category`) VALUES ('1', 'Co-Op')";
+// $sql1[] = "INSERT INTO `game_category` (`game_id`, `category`) VALUES ('2', 'New Releases')";
+// $sql1[] = "INSERT INTO `game_category` (`game_id`, `category`) VALUES ('2', 'Co-Op')";
+// $sql1[] = "INSERT INTO `game_category` (`game_id`, `category`) VALUES ('2', 'shooter')";
+// $sql1[] = "INSERT INTO `game_category` (`game_id`, `category`) VALUES ('3', 'Top Seller')";
+// $sql1[] = "INSERT INTO `game_category` (`game_id`, `category`) VALUES ('3', 'Co-Op')";
+// $sql1[] = "INSERT INTO `game_category` (`game_id`, `category`) VALUES ('3', 'Shooter')";
+// $sql1[] = "INSERT INTO `game_category` (`game_id`, `category`) VALUES ('4', 'Shooter')";
+// $sql1[] = "INSERT INTO `game_category` (`game_id`, `category`) VALUES ('4', 'Top Seller')";
+// $sql1[] = "INSERT INTO `game_category` (`game_id`, `category`) VALUES ('4', 'Action')";
+// $sql1[] = "INSERT INTO `game_category` (`game_id`, `category`) VALUES ('5', 'Top Seller')";
+// $sql1[] = "INSERT INTO `game_category` (`game_id`, `category`) VALUES ('5', 'Co-Op')";
+// $sql1[] = "INSERT INTO `game_category` (`game_id`, `category`) VALUES ('6', 'Co-Op')";
+// $sql1[] = "INSERT INTO `game_category` (`game_id`, `category`) VALUES ('6', 'Shooter')";
+// $sql1[] = "INSERT INTO `game_category` (`game_id`, `category`) VALUES ('6', 'New Releases')";
+// $sql1[] = "INSERT INTO `game_category` (`game_id`, `category`) VALUES ('6', 'Action')";
 
 $sql1[] = "INSERT INTO `game_category` (`game_id`, `category`) VALUES ('1', 'Top Seller')";
-$sql1[] = "INSERT INTO `game_category` (`game_id`, `category`) VALUES ('1', 'Co-Op')";
-$sql1[] = "INSERT INTO `game_category` (`game_id`, `category`) VALUES ('2', 'New Releases')";
-$sql1[] = "INSERT INTO `game_category` (`game_id`, `category`) VALUES ('2', 'Co-Op')";
-$sql1[] = "INSERT INTO `game_category` (`game_id`, `category`) VALUES ('2', 'shooter')";
+$sql1[] = "INSERT INTO `game_category` (`game_id`, `category`) VALUES ('2', 'Top Seller')";
 $sql1[] = "INSERT INTO `game_category` (`game_id`, `category`) VALUES ('3', 'Top Seller')";
-$sql1[] = "INSERT INTO `game_category` (`game_id`, `category`) VALUES ('3', 'Co-Op')";
-$sql1[] = "INSERT INTO `game_category` (`game_id`, `category`) VALUES ('3', 'Shooter')";
-$sql1[] = "INSERT INTO `game_category` (`game_id`, `category`) VALUES ('4', 'Shooter')";
 $sql1[] = "INSERT INTO `game_category` (`game_id`, `category`) VALUES ('4', 'Top Seller')";
-$sql1[] = "INSERT INTO `game_category` (`game_id`, `category`) VALUES ('4', 'Action')";
 $sql1[] = "INSERT INTO `game_category` (`game_id`, `category`) VALUES ('5', 'Top Seller')";
+$sql1[] = "INSERT INTO `game_category` (`game_id`, `category`) VALUES ('6', 'Top Seller')";
+$sql1[] = "INSERT INTO `game_category` (`game_id`, `category`) VALUES ('7', 'Top Seller')";
+
+$sql1[] = "INSERT INTO `game_category` (`game_id`, `category`) VALUES ('1', 'Co-Op')";
+$sql1[] = "INSERT INTO `game_category` (`game_id`, `category`) VALUES ('2', 'Co-Op')";
+$sql1[] = "INSERT INTO `game_category` (`game_id`, `category`) VALUES ('3', 'Co-Op')";
+$sql1[] = "INSERT INTO `game_category` (`game_id`, `category`) VALUES ('4', 'Co-Op')";
 $sql1[] = "INSERT INTO `game_category` (`game_id`, `category`) VALUES ('5', 'Co-Op')";
 $sql1[] = "INSERT INTO `game_category` (`game_id`, `category`) VALUES ('6', 'Co-Op')";
+$sql1[] = "INSERT INTO `game_category` (`game_id`, `category`) VALUES ('7', 'Co-Op')";
+
+$sql1[] = "INSERT INTO `game_category` (`game_id`, `category`) VALUES ('1', 'Shooter')";
+$sql1[] = "INSERT INTO `game_category` (`game_id`, `category`) VALUES ('2', 'Shooter')";
+$sql1[] = "INSERT INTO `game_category` (`game_id`, `category`) VALUES ('3', 'Shooter')";
+$sql1[] = "INSERT INTO `game_category` (`game_id`, `category`) VALUES ('4', 'Shooter')";
+$sql1[] = "INSERT INTO `game_category` (`game_id`, `category`) VALUES ('5', 'Shooter')";
 $sql1[] = "INSERT INTO `game_category` (`game_id`, `category`) VALUES ('6', 'Shooter')";
+$sql1[] = "INSERT INTO `game_category` (`game_id`, `category`) VALUES ('7', 'Shooter')";
+
+$sql1[] = "INSERT INTO `game_category` (`game_id`, `category`) VALUES ('1', 'New Releases')";
+$sql1[] = "INSERT INTO `game_category` (`game_id`, `category`) VALUES ('2', 'New Releases')";
+$sql1[] = "INSERT INTO `game_category` (`game_id`, `category`) VALUES ('3', 'New Releases')";
+$sql1[] = "INSERT INTO `game_category` (`game_id`, `category`) VALUES ('4', 'New Releases')";
+$sql1[] = "INSERT INTO `game_category` (`game_id`, `category`) VALUES ('5', 'New Releases')";
 $sql1[] = "INSERT INTO `game_category` (`game_id`, `category`) VALUES ('6', 'New Releases')";
+$sql1[] = "INSERT INTO `game_category` (`game_id`, `category`) VALUES ('7', 'New Releases')";
+
+$sql1[] = "INSERT INTO `game_category` (`game_id`, `category`) VALUES ('1', 'Action')";
+$sql1[] = "INSERT INTO `game_category` (`game_id`, `category`) VALUES ('2', 'Action')";
+$sql1[] = "INSERT INTO `game_category` (`game_id`, `category`) VALUES ('3', 'Action')";
+$sql1[] = "INSERT INTO `game_category` (`game_id`, `category`) VALUES ('4', 'Action')";
+$sql1[] = "INSERT INTO `game_category` (`game_id`, `category`) VALUES ('5', 'Action')";
 $sql1[] = "INSERT INTO `game_category` (`game_id`, `category`) VALUES ('6', 'Action')";
+$sql1[] = "INSERT INTO `game_category` (`game_id`, `category`) VALUES ('7', 'Action')";
 
 foreach ($sql1 as $query) {
     if (mysqli_query($conn, $query)) {
