@@ -33,7 +33,7 @@ body {
   z-index: 2;
 }
 .form-register input{
-  margin-bottom: -1px;
+  margin-bottom: 5px;
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
 }

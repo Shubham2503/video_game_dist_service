@@ -91,7 +91,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
         }
       }
     </style>
-
+ 
     <link href="signin.css" rel="stylesheet">
   </head>
 
@@ -101,7 +101,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
       <img class="mb-4" src="../image/logo.png" alt="" width="72" height="72">
       <h1 class="h3 mb-3 font-weight-normal" style="color: white;">Please sign in</h1>
       <label for="inputusername" class="sr-only">Email address</label>
-      <input type="text" id="inputusername" name="username" class="form-control" placeholder="user" required autofocus>
+      <input type="text" id="inputusername" name="username" class="form-control" placeholder="username" required autofocus>
       <label for="inputPassword" class="sr-only">Password</label>
       <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required>
 
