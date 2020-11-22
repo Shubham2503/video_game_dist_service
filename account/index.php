@@ -37,7 +37,7 @@ $sql = "SELECT * FROM user_games WHERE userid = '$userid'";
 $res = mysqli_query($conn, $sql);
 
 while ($row = mysqli_fetch_assoc($res))
-    $user_game[] = array($row['game_id'],$row['datetime']);
+    $user_game[] = $row['game_id'];
 
 
 $games = array();
@@ -101,6 +101,16 @@ console_log($user_game);
             text-decoration: underline;
         }
 
+        input {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        }
+
+        .form-control, .input-group-text {
+            color: #c4cacf;
+            background-color: #14213D;
+            background-clip: padding-box;
+            border: 1px solid #14213D;
+        }
     </style>
     <link href="form-validation.css" rel="stylesheet">
 </head>
@@ -112,7 +122,7 @@ console_log($user_game);
             <div class="container">
 
                 <div class="py-5 text-center">
-                    <a href="../store/index.php"><img class="d-block mx-auto mb-4" src="../image/logo.png" alt="" width="72" height="72"></a>
+                    <a href="../home/home.php"><img class="d-block mx-auto mb-4" src="../image/logo.png" alt="" width="72" height="72"></a>
                     <h2 style="color: white;">Account</h2>
                     <p class="lead"></p>
                 </div>
@@ -258,13 +268,12 @@ console_log($user_game);
                                     <th style="color: #ffc107;">Game</th>
                                     <th style="color: #ffc107;">Published</th>
                                     <th style="color: #ffc107;">Developer studio</th>
-                                    <th style="color: #ffc107;">Date - Time</th>
                                 </tr>
                                 <?php
                                 console_log($games);
                                 foreach ($user_game as $i) {
                                     echo "<tr>";
-                                    echo "<td><a href='../game/index.php?game_id=$i[0]'>" .$games[$i[0]]['name'] . "</a></td><td>" . $games[$i[0]]['year'] . "</td><td>" . $games[$i[0]]['developer'] . "</td><td>" . $i[1] . "</td>";
+                                    echo "<td>" . $games[$i]['name'] . "</td><td>" . $games[$i]['year'] . "</td><td>" . $games[$i]['developer'] . "</td>";
                                     echo "</tr>";
                                 }
                                 ?>
@@ -279,7 +288,7 @@ console_log($user_game);
                     ...Mesasage</div>
                 <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
                     <div class="row">
-                        <div class="col-md-5" >
+                        <div class="col-md-5">
                             <a href="../home/logout.php" class="btn btn-outline-warning btn-lg btn-block" id="signout">Sign out</a>
                         </div>
                     </div>
