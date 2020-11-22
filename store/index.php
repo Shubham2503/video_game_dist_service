@@ -69,30 +69,65 @@ foreach ($game_cat as $category => $game_list) {
     <meta charset="utf-8">
     <title>Store</title>
     <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .bg-dark {
+            background-color: #14213D !important;
+        }
+
+        body {
+            background-color: black;
+        }
+
+        .btn-outline-success {
+            color: #FCA311;
+            border-color: #FCA311;
+        }
+
+        .btn-outline-success:hover {
+            background-color: #FCA311 !important;
+            color: black;
+            border-color: #FCA311;
+        }
+
+        input {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        }
+
+        .form-control,
+        .input-group-text {
+            color: #E5E5E5;
+            background-color: #1f3460;
+            background-clip: padding-box;
+            border: 1px solid #1f3460;
+        }
+    </style>
 </head>
 
 
 <body>
-        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-            <a class="navbar-brand" href="../store/index.php">
-                <img src="../image/logo.png" width="40" height="40" alt="home" loading="lazy">
-            </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <a class="navbar-brand" href="../store/index.php">
+            <img src="../image/logo.png" width="40" height="40" alt="home" loading="lazy">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-            <div class="collapse navbar-collapse" id="navbarCollapse">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="../account/index.php">Account <span class="sr-only">(current)</span></a>
-                    </li>
-                </ul>
-                <form class="form-inline my-2 my-lg-0" action="search.php" method="get">
-                    <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" name="key">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                </form>
-            </div>
-        </nav>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="../store/index.php">Store <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="../account/index.php">Account <span class="sr-only">(current)</span></a>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0" action="search.php" method="get">
+                <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" name="key">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        </div>
+    </nav>
 
     <main role="main">
     </main>
