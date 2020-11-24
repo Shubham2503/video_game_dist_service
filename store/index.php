@@ -10,10 +10,12 @@ function console_log($output, $with_script_tags = true)
 
 
 require '../include/connect_db.php';
-$sql = "SELECT DISTINCT category FROM game_category";
+$sql = "SELECT DISTINCT category FROM game_category WHERE category not in ('New Releases') ORDER BY RAND() LIMIT 3";
 $result = mysqli_query($conn, $sql);
 $game_cat = array();
 $cat = array();
+$game_cat['New Releases'] = array();
+array_push($cat,'New Releases');
 while ($row = mysqli_fetch_assoc($result)) {
     // output data of each row
     $category = $row["category"];
@@ -23,15 +25,19 @@ while ($row = mysqli_fetch_assoc($result)) {
 console_log($game_cat);
 
 
-$sql = "SELECT * FROM game_category";
+$sql = "SELECT * FROM game_category ORDER BY RAND()";
 $result = mysqli_query($conn, $sql);
 
 while ($row = mysqli_fetch_assoc($result)) {
     // output data of each row
     $game_id = $row["game_id"];
     $category = $row["category"];
+    if(in_array($category,$cat))
+    {
+      $game_cat[$category][] = $game_id;
+    }
 
-    $game_cat[$category][] = $game_id;
+    
 }
 console_log($game_cat);
 

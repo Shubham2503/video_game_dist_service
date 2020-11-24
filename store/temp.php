@@ -1,37 +1,43 @@
 <?php
 function console_log($output, $with_script_tags = true)
 {
-  $js_code = 'console.log(' . json_encode($output, JSON_HEX_TAG) . ');';
-  if ($with_script_tags) {
-    $js_code = '<script>' . $js_code . '</script>';
-  }
-  echo $js_code;
+    $js_code = 'console.log(' . json_encode($output, JSON_HEX_TAG) . ');';
+    if ($with_script_tags) {
+        $js_code = '<script>' . $js_code . '</script>';
+    }
+    echo $js_code;
 }
 
 
 require '../include/connect_db.php';
-$sql = "SELECT DISTINCT category FROM game_category";
+$sql = "SELECT DISTINCT category FROM game_category WHERE category not in ('New Releases') ORDER BY RAND() LIMIT 3";
 $result = mysqli_query($conn, $sql);
 $game_cat = array();
 $cat = array();
+$game_cat['New Releases'] = array();
+array_push($cat,'New Releases');
 while ($row = mysqli_fetch_assoc($result)) {
-  // output data of each row
-  $category = $row["category"];
-  $game_cat[$category] = array();
-  array_push($cat, $category);
+    // output data of each row
+    $category = $row["category"];
+    $game_cat[$category] = array();
+    array_push($cat, $category);
 }
 console_log($game_cat);
 
 
-$sql = "SELECT * FROM game_category";
+$sql = "SELECT * FROM game_category ORDER BY RAND()";
 $result = mysqli_query($conn, $sql);
 
 while ($row = mysqli_fetch_assoc($result)) {
-  // output data of each row
-  $game_id = $row["game_id"];
-  $category = $row["category"];
+    // output data of each row
+    $game_id = $row["game_id"];
+    $category = $row["category"];
+    if(in_array($category,$cat))
+    {
+      $game_cat[$category][] = $game_id;
+    }
 
-  $game_cat[$category][] = $game_id;
+    
 }
 console_log($game_cat);
 
@@ -47,29 +53,28 @@ console_log($game_cat);
 
 // }
 
-
 // HTML CONTENT FOR CATEGORY NUMBER 1 
 $content = array();
 foreach ($game_cat as $category => $game_list) {
 
-  $content[$category] = "<h2>$category</h2>
+    $content[$category] = "<h2>$category</h2>
   <div class='content'>";
-  $count = 0;
-  foreach ($game_list as $game_id) {
-    if ($count == 3)
-      break;
-    $sql = "SELECT * FROM games where game_id = $game_id";
-    $res = mysqli_query($conn, $sql);
-    $row = mysqli_fetch_assoc($res);
-    //$out = "<a href='../game/index.php?game_id=$row[0]'>$row[1]</a><br>";
-    $id = $row['game_id'];
-    $name = $row['name'];
-    $descrip = $row['descrip'];
-    $year = $row['year'];
-    $price = $row['price'];
-    $dev = $row['developer'];
-    $count++;
-    $content[$category] .= "
+    $count = 0;
+    foreach ($game_list as $game_id) {
+        if ($count == 3)
+            break;
+        $sql = "SELECT * FROM games where game_id = $game_id";
+        $res = mysqli_query($conn, $sql);
+        $row = mysqli_fetch_assoc($res);
+        //$out = "<a href='../game/index.php?game_id=$row[0]'>$row[1]</a><br>";
+        $id = $row['game_id'];
+        $name = $row['name'];
+        $descrip = $row['descrip'];
+        $year = $row['year'];
+        $price = $row['price'];
+        $dev = $row['developer'];
+        $count++;
+        $content[$category] .= "
     <div class='card' style='height:auto'>
     <a href='../game/index.php?game_id=$id'>
   <img class='card-img-top img-fluid' src='../image/$id/1.jpg' alt='Card image cap'>
@@ -82,111 +87,106 @@ foreach ($game_cat as $category => $game_list) {
   </div>
 </div>
            ";
-  }
-  $content[$category] .= '</div>';
+    }
+    $content[$category] .= '</div>';
 }
-
-// <div class='card'>
-// <div class='frontWeb' style='background-image: url(../image/$id/1.jpg);'>
-//     <p>$name</p>
-// </div>
-
-// <div class='back'>
-//     <div>
-//         <div class='release_date'>$year <span></span></div>
-//         <div class='movie_gens'>$category</div>
-
-//         <p class='overview'>$descrip</p>
-//         <a target='_blank' href='../game/index.php?game_id=$id' class='button'>BUY</a>
-//     </div>
-// </div>
-
-// </div>
-console_log($content['Co-Op']);
-
-
-
-
-
-
 
 
 ?>
 
 
 
-
-
-
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <link rel="stylesheet" href="card.css">
+    <meta charset="utf-8">
+    <title>Store</title>
+    <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="card.css">
+    <style>
+        main{
+            margin-top: 74px;
+        }
+        .bg-dark {
+            background-color: #14213D !important;
+        }
+
+        .card {
+            width: 18rem;
+        }
+
+        body {
+            background-color: black;
+        }
+
+        .btn-outline-success {
+            color: #FCA311;
+            border-color: #FCA311;
+        }
+
+        .btn-outline-success:hover {
+            background-color: #FCA311 !important;
+            color: black;
+            border-color: #FCA311;
+        }
+
+        input {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        }
+
+        .form-control,
+        .input-group-text {
+            color: #E5E5E5;
+            background-color: #1f3460;
+            background-clip: padding-box;
+            border: 1px solid #1f3460;
+        }
+    </style>
 </head>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-<style>
-  .card {
-    width: 18rem;
-  }
-</style>
+
 
 <body>
-  <button id="btnFlipHover">flip or hover</button>
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <a class="navbar-brand" href="../store/index.php">
+            <img src="../image/logo.png" width="40" height="40" alt="home" loading="lazy">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-  <div class="container">
-    <h1 class="heading">Games</h1>
-    <p class="description">Excusive Games availabel....
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="../store/index.php">Store <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="../account/index.php">Account <span class="sr-only">(current)</span></a>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0" action="search.php" method="get">
+                <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" name="key">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        </div>
+    </nav>
 
-    </p>
-    <!--  
-  <a class="card" href="#!">
-    <div class="front" style="background-image: url(//source.unsplash.com/300x401);">
-      <p>Lorem ipsum dolor sit amet consectetur adipisi.</p>
-    </div>
-    <div class="back">
-      <div class="release_date">1985</div>
-      <div>
-        <p>Consectetur adipisicing elit. Possimus, praesentium?</p>
-        <p>Provident consectetur natus voluptatem quis tenetur sed beatae eius sint.</p>
-        <button class="button">Click Here</button>
-      </div>
-    </div>
-  </a> -->
+    <main role="main">
+        <div class="container">
+            <h1 class="heading">Games</h1>
+            <p class="description">Excusive Games availabel....</p>
+            <?php
+            foreach ($cat as $c) {
+                echo $content[$c];
+            }
+            ?>
+        </div>
+        </div>
+    </main>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
-
-    <!-- <a class="card" href="#!">
-    <div class="front" style="background-image: url(//source.unsplash.com/300x402);">
-      <p>Lorem ipsum dolor sit amet consectetur adipisi.</p>
-    </div>
-    <div class="back">
-      <div>
-        <p>Consectetur adipisicing elit. Possimus, praesentium?</p>
-        <p>Provident consectetur natus voluptatem quis tenetur sed beatae eius sint.</p>
-        <button class="button">Click Here</button>
-      </div>
-    </div>
-  </a> -->
-
-
-    <?php
-    foreach ($cat as $c) {
-      echo $content[$c];
-    }
-    ?>
-
-
-
-  </div>
-  </div>
-
-  <!-- <script src="card.js"></script> -->
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
 
 </html>
