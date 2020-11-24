@@ -32,12 +32,14 @@ if (!empty($key)) {
 
             $content .= "
                 <div class='card' style='height:auto'>
+                <a href='../game/index.php?game_id=$id'>
               <img class='card-img-top img-fluid' src='../image/$id/1.jpg' alt='Card image cap'>
+              </a>
               <div class='card-body' style= 'padding: 9px;'>
                 <h5 class='card-title' style = 'margin-bottom:0; font-size: 1rem'>$name</h5>
                 <footer class='blockquote-footer'>by <cite title='Source Title'>$dev</cite></footer>
                 <p class='card-text' style = 'margin-bottom:0; margin-top:10px '>$ $price</p>
-                <a href='../game/index.php?game_id=$id' class='btn btn-primary'>Buy</a>
+               
               </div>
             </div>
                        ";
