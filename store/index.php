@@ -223,16 +223,11 @@ foreach ($game_cat as $category => $game_list) {
 
             <hr class="featurette-divider">
 
-            <div class="jumbotron jumbotron-fluid">
-                <!-- <div class="carousel-caption text-left">
-                    <h1>temp</h1>
-                    <p></p>
-                </div> -->
-                <!-- <div class="container">
-                    <h1 class="display-4">Fluid jumbotron</h1>
-                    <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
-                </div> -->
-            </div>
+            <a href="../game/index.php?game_id=9">
+                <div class="jumbotron jumbotron-fluid" style="background-image: url('../image/9/1.jpg');">
+                </div>
+            </a>
+            <div style="color: white;">Spider-Man: Miles Morales</div>
 
             <hr class="featurette-divider">
             <?php

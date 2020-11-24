@@ -137,7 +137,7 @@ console_log($user_game);
             <div class="container">
 
                 <div class="py-5 text-center">
-                    <a href="../home/home.php"><img class="d-block mx-auto mb-4" src="../image/logo.png" alt="" width="72" height="72"></a>
+                    <a href="../store/index.php"><img class="d-block mx-auto mb-4" src="../image/logo.png" alt="" width="72" height="72"></a>
                     <h2 style="color: white;">Account</h2>
                     <p class="lead"></p>
                 </div>
