@@ -109,10 +109,26 @@ $sql1[] = "INSERT INTO `games` VALUES ('10', 'Godfall', '10', '2020', 'Counterpl
 'Adventure across exotic vistas, from the above-ground reefs of the Water Realm to the subterranean crimson forests of the Earth Realm.'
 ,'Adventure across exotic vistas, from the above-ground reefs of the Water Realm to the subterranean crimson forests of the Earth Realm.'
 ,'Unlock 12 Valorplates: Divine, Zodiac-inspired suits of armor that empower you to shred every enemy between you and Macros.');";
-$sql1[] = "INSERT INTO `games` VALUES ('11', 'HUMANKIND', '15', '2019', 'AMPLITUDE Studios', 'P9p_t408_vA',
+$sql1[] = "INSERT INTO `games` VALUES ('11', 'HUMANKIND', '15', '2019', 'AMPLITUDE Studios', 'TfJZsyIaaKg',
 'HUMANKIND™ is a historical strategy game, where you’ll be re-writing the entire narrative of human history and combining cultures to create a civilization that’s as unique as you are.'
 ,'Face historical events, take impactful moral decisions, and make scientific breakthroughs. Discover the natural wonders of the world or build the remarkable creations of humankind.'
 ,'Show off tactical skills by mastering terrain elevation with city-building and tactical battles. Call on reinforcements to transform an epic battle into a multi-terrain world war!');";
+$sql1[] = "INSERT INTO `games` VALUES ('12', 'Trackmania', '33', '2021', 'Ubisoft Nadeo', 'TQQOwnbuvsc',
+'Even solo, race against other players’ ghosts that are close to your level to help you improve progressively, at your own pace.'
+,'You can either play by yourself and enjoy the drive, or collect medals and assess your skills with regional and international rankings.'
+,'25 official tracks, updated every 3 months and playable solo, online and locally to practice your racing skills.');";
+$sql1[] = "INSERT INTO `games` VALUES ('13', 'The Cycle', '11', '2019', 'YAGER', 'n6Jj-ymCtxs',
+'On the path to glory you’ll have to overcome the odds - beat other players, take out vicious beasts, complete the most contracts and escape the deadly storm!'
+,'No matter what you chose, whether you’re a lone wolf or a tactical team player, whether you play it safe or risk it all in your quest for fame, your fortune lies in your own hands! '
+,'In The Cycle, you don’t need to rely on getting lucky loot - you make the decisions! Pick your weapons, weapon mods and special abilities ahead of time, and outsmart your opponents on your road to victory. ');";
+$sql1[] = "INSERT INTO `games` VALUES ('14', 'Satisfactory', '20', '2019', 'Coffee Stain Studios', 'QvWaV4qshZQ',
+'Satisfactory is a first-person open-world factory building game with a dash of exploration and combat. Play alone or with friends, explore an alien planet, create multi-story factories, and enter conveyor belt heaven!'
+,'Early Access games are still under development and may change significantly over time. As a result, you may experience unforeseen issues or completely new gameplay elements while playing this game.'
+,'You can play now to experience the game while its being built or wait until it offers a more complete experience.');";
+$sql1[] = "INSERT INTO `games` VALUES ('15', 'Red Dead Redemption 2', '44', '2019', 'Rockstar Games', 'gmA6MrX81z4',
+'Arthur Morgan and the Van der Linde gang are outlaws on the run. With federal agents and the best bounty hunters in the nation massing on their heels, the gang must rob, steal and fight their way across the rugged heartland of America in order to survive.'
+,' As deepening internal divisions threaten to tear the gang apart, Arthur must make a choice between his own ideals and loyalty to the gang who raised him.'
+,'With all new graphical and technical enhancements for deeper immersion, Red Dead Redemption 2 for PC takes full advantage of the power of the PC to bring every corner of this massive, rich and detailed world to life including increased draw distances.');";
 
 // $sql1[] = "INSERT INTO `game_category` (`game_id`, `category`) VALUES ('1', 'Top Seller')";
 // $sql1[] = "INSERT INTO `game_category` (`game_id`, `category`) VALUES ('1', 'Co-Op')";
