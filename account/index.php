@@ -101,8 +101,16 @@ console_log($user_game);
             text-decoration: underline;
         }
 
-        input {
+        input,
+        input:disabled {
             box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            background-color: #14213D;
+        }
+
+        /* .form-control:disabled,
+        .form-control[readonly] {
+           
+            opacity: 1;
         }
 
         .form-control,
@@ -111,10 +119,13 @@ console_log($user_game);
             background-color: #14213D;
             background-clip: padding-box;
             border: 1px solid #14213D;
-        }
-        .row{
+        } */
+
+        .row {
             width: 100%;
         }
+
+        
     </style>
     <link href="form-validation.css" rel="stylesheet">
 </head>
