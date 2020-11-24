@@ -101,6 +101,18 @@ $sql1[] = "INSERT INTO `games` VALUES ('8', 'Cyberpunk 2077', '500', '2020', 'CD
 'Cyberpunk 2077 is an upcoming action role-playing video game developed and published by CD Projekt. It is scheduled to be released for Microsoft Windows, PlayStation 4, PlayStation 5, Stadia, Xbox One, and Xbox Series X/S on 10 December 2020.'
 ,'Cyberpunk 2077 is an open-world, action-adventure story set in Night City, a megalopolis obsessed with power, glamour and body modification. You play as V, a mercenary outlaw going after a one-of-a-kind implant that is the key to immortality.'
 ,'Launch business ventures from your Maze Bank West Executive Office, research powerful weapons technology from your underground Gunrunning Bunker and use your Counterfeit Cash Factory to start a lucrative counterfeiting operation.');";
+$sql1[] = "INSERT INTO `games` VALUES ('9', 'Spider-Man: Miles Morales', '20', '2020', 'Sony Interactive Entertainment', 'gHzuHo80U2M',
+'In the latest adventure in the Marvel’s Spider-Man universe, teenager Miles Morales is adjusting to his new home while following in the footsteps of his mentor, Peter Parker, as a new Spider-Man.'
+,'But when a fierce power struggle threatens to destroy his new home, the aspiring hero realizes that with great power, there must also come great responsibility. To save all of Marvel’s New York, Miles must take up the mantle of Spider-Man and own it.'
+,'Miles Morales discovers explosive powers that set him apart from his mentor, Peter Parker. Master his unique, bio-electric venom blast attacks and covert camouflage power alongside spectacular web-slinging acrobatics, gadgets and skills.');";
+$sql1[] = "INSERT INTO `games` VALUES ('10', 'Godfall', '10', '2020', 'Counterplay Games', 'P9p_t408_vA',
+'Adventure across exotic vistas, from the above-ground reefs of the Water Realm to the subterranean crimson forests of the Earth Realm.'
+,'Adventure across exotic vistas, from the above-ground reefs of the Water Realm to the subterranean crimson forests of the Earth Realm.'
+,'Unlock 12 Valorplates: Divine, Zodiac-inspired suits of armor that empower you to shred every enemy between you and Macros.');";
+$sql1[] = "INSERT INTO `games` VALUES ('11', 'HUMANKIND', '15', '2019', 'AMPLITUDE Studios', 'P9p_t408_vA',
+'HUMANKIND™ is a historical strategy game, where you’ll be re-writing the entire narrative of human history and combining cultures to create a civilization that’s as unique as you are.'
+,'Face historical events, take impactful moral decisions, and make scientific breakthroughs. Discover the natural wonders of the world or build the remarkable creations of humankind.'
+,'Show off tactical skills by mastering terrain elevation with city-building and tactical battles. Call on reinforcements to transform an epic battle into a multi-terrain world war!');";
 
 // $sql1[] = "INSERT INTO `game_category` (`game_id`, `category`) VALUES ('1', 'Top Seller')";
 // $sql1[] = "INSERT INTO `game_category` (`game_id`, `category`) VALUES ('1', 'Co-Op')";
