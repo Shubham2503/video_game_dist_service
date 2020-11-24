@@ -86,8 +86,17 @@ if (!empty($key)) {
             color: black;
             border-color: #FCA311;
         }
+
+        
         .card{
             width: 18rem;
+            border: 1px solid black;
+            background-color: black;
+            color: white;
+        }
+
+        .card-text {
+            color: #e9c46a;
         }
 
         input {
