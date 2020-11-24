@@ -29,15 +29,17 @@ if (!empty($key)) {
             $year = $row['year'];
             $price = $row['price'];
             $dev = $row['developer'];
+            $url = '"../image/'.$id.'/1.jpg"';
 
             $content .= "
                 <div class='card' style='height:auto'>
-              <img class='card-img-top img-fluid' src='../image/$id/1.jpg' alt='Card image cap'>
+                <img class='card-img-top img-fluid' src='../image/$id/1.jpg' alt='Card image cap'>
+              
               <div class='card-body' style= 'padding: 9px;'>
                 <h5 class='card-title' style = 'margin-bottom:0; font-size: 1rem'>$name</h5>
                 <footer class='blockquote-footer'>by <cite title='Source Title'>$dev</cite></footer>
                 <p class='card-text' style = 'margin-bottom:0; margin-top:10px '>$ $price</p>
-                <a href='../game/index.php?game_id=$id' class='btn btn-primary'>Buy</a>
+               
               </div>
             </div>
                        ";
@@ -66,6 +68,7 @@ if (!empty($key)) {
     <link rel="stylesheet" href="card.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <style>
+        
         .bg-dark {
             background-color: #14213D !important;
         }
@@ -84,9 +87,6 @@ if (!empty($key)) {
             color: black;
             border-color: #FCA311;
         }
-        .card{
-            width: 18rem;
-        }
 
         input {
             box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -98,6 +98,9 @@ if (!empty($key)) {
             background-color: #1f3460;
             background-clip: padding-box;
             border: 1px solid #1f3460;
+        }
+        .card{
+            width: 18rem;
         }
     </style>
 </head>
@@ -130,6 +133,8 @@ if (!empty($key)) {
     <main role="main">
         <?php echo $content ?>
     </main>
+
+    
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
