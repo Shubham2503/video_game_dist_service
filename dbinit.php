@@ -93,9 +93,13 @@ $sql1[] = "INSERT INTO `games` VALUES ('6', 'Rogue Company', '32', '2020', 'Hi-R
 'The world needs saving and only the best of the best can do it. Suit up as one of the elite agents of Rogue Company and go to war in a variety of different game modes.'
 ,'Rogue Company is a free-to-play multiplayer, tactical, third-person shooter video game developed by First Watch Games and published by Hi-Rez Studios.'
 ,'Rogue Company features a range of playable characters, referred to as Rogues. The game features objective-based game modes and various maps.');";
-$sql1[] = "INSERT INTO `games` VALUES ('7', 'GTA V', '50', '2015', 'Rockstar Games', 'cwLbCWDntVc',
+$sql1[] = "INSERT INTO `games` VALUES ('7', 'GTA V', '50', '2015', 'Rockstar Games', 'VjZ5tgjPVfU',
 'When a young street hustler, a retired bank robber and a terrifying psychopath land themselves in trouble, they must pull off a series of dangerous heists to survive in a city in which they can trust nobody, least of all each other.'
 ,'Discover an ever-evolving world of choices and ways to play as you climb the criminal ranks of Los Santos and Blaine County in the ultimate shared Online experience.'
+,'Launch business ventures from your Maze Bank West Executive Office, research powerful weapons technology from your underground Gunrunning Bunker and use your Counterfeit Cash Factory to start a lucrative counterfeiting operation.');";
+$sql1[] = "INSERT INTO `games` VALUES ('8', 'Cyberpunk 2077', '500', '2020', 'CD Projekt RED', 'VjZ5tgjPVfU',
+'Cyberpunk 2077 is an upcoming action role-playing video game developed and published by CD Projekt. It is scheduled to be released for Microsoft Windows, PlayStation 4, PlayStation 5, Stadia, Xbox One, and Xbox Series X/S on 10 December 2020.'
+,'Cyberpunk 2077 is an open-world, action-adventure story set in Night City, a megalopolis obsessed with power, glamour and body modification. You play as V, a mercenary outlaw going after a one-of-a-kind implant that is the key to immortality.'
 ,'Launch business ventures from your Maze Bank West Executive Office, research powerful weapons technology from your underground Gunrunning Bunker and use your Counterfeit Cash Factory to start a lucrative counterfeiting operation.');";
 
 // $sql1[] = "INSERT INTO `game_category` (`game_id`, `category`) VALUES ('1', 'Top Seller')";
