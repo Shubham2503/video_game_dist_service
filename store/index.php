@@ -15,7 +15,7 @@ $result = mysqli_query($conn, $sql);
 $game_cat = array();
 $cat = array();
 $game_cat['New Releases'] = array();
-array_push($cat,'New Releases');
+array_push($cat, 'New Releases');
 while ($row = mysqli_fetch_assoc($result)) {
     // output data of each row
     $category = $row["category"];
@@ -32,12 +32,9 @@ while ($row = mysqli_fetch_assoc($result)) {
     // output data of each row
     $game_id = $row["game_id"];
     $category = $row["category"];
-    if(in_array($category,$cat))
-    {
-      $game_cat[$category][] = $game_id;
+    if (in_array($category, $cat)) {
+        $game_cat[$category][] = $game_id;
     }
-
-    
 }
 console_log($game_cat);
 
@@ -105,19 +102,33 @@ foreach ($game_cat as $category => $game_list) {
     <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="card.css">
     <style>
-        main{
+        main {
             margin-top: 74px;
         }
+
         .bg-dark {
             background-color: #14213D !important;
         }
 
         .card {
             width: 18rem;
+            border: 1px solid black;
+            background-color: black;
+            color: white;
+        }
+
+        .card-text {
+            color: #e9c46a;
         }
 
         body {
             background-color: black;
+        }
+
+        .h2,
+        h2 {
+            font-size: 2rem;
+            color: #e5e5e5;
         }
 
         .btn-outline-success {
@@ -141,6 +152,16 @@ foreach ($game_cat as $category => $game_list) {
             background-color: #1f3460;
             background-clip: padding-box;
             border: 1px solid #1f3460;
+        }
+
+        .jumbotron {
+            color: white;
+            background-image: url("../image/2/1.jpg");
+            -webkit-background-size: 100% 100%;
+            -moz-background-size: 100% 100%;
+            -o-background-size: 100% 100%;
+            background-size: cover;
+            min-height: 450px;
         }
     </style>
 </head>
@@ -175,11 +196,44 @@ foreach ($game_cat as $category => $game_list) {
         <div class="container">
             <h1 class="heading">Games</h1>
             <p class="description">Excusive Games availabel....</p>
+
+            <!-- new rel -->
             <?php
-            foreach ($cat as $c) {
-                echo $content[$c];
-            }
+            echo $content[$cat[0]];
             ?>
+
+            <!-- jumbotron -->
+            <div class="jumbotron jumbotron-fluid">
+                <!-- <div class="carousel-caption text-left">
+                    <h1>temp</h1>
+                    <p></p>
+                </div> -->
+                <!-- <div class="container">
+                    <h1 class="display-4">Fluid jumbotron</h1>
+                    <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+                </div> -->
+            </div>
+
+            <?php
+            echo $content[$cat[1]];
+            echo $content[$cat[2]];
+            ?>
+
+            <div class="jumbotron jumbotron-fluid">
+                <!-- <div class="carousel-caption text-left">
+                    <h1>temp</h1>
+                    <p></p>
+                </div> -->
+                <!-- <div class="container">
+                    <h1 class="display-4">Fluid jumbotron</h1>
+                    <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+                </div> -->
+            </div>
+
+            <?php
+            echo $content[$cat[3]];
+            ?>
+
         </div>
         </div>
     </main>
