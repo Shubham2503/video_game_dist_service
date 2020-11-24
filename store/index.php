@@ -156,12 +156,17 @@ foreach ($game_cat as $category => $game_list) {
 
         .jumbotron {
             color: white;
-            background-image: url("../image/2/1.jpg");
+
             -webkit-background-size: 100% 100%;
             -moz-background-size: 100% 100%;
             -o-background-size: 100% 100%;
             background-size: cover;
             min-height: 450px;
+        }
+
+        .featurette-divider {
+            margin: 2rem 0;
+            /* Space out the Bootstrap <hr> more */
         }
     </style>
 </head>
@@ -194,31 +199,30 @@ foreach ($game_cat as $category => $game_list) {
 
     <main role="main">
         <div class="container">
-            <h1 class="heading">Games</h1>
-            <p class="description">Excusive Games availabel....</p>
-
             <!-- new rel -->
             <?php
             echo $content[$cat[0]];
             ?>
-
+            <hr class="featurette-divider">
             <!-- jumbotron -->
-            <div class="jumbotron jumbotron-fluid">
-                <!-- <div class="carousel-caption text-left">
-                    <h1>temp</h1>
-                    <p></p>
-                </div> -->
-                <!-- <div class="container">
-                    <h1 class="display-4">Fluid jumbotron</h1>
-                    <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
-                </div> -->
-            </div>
+            <a href="../game/index.php?game_id=8">
+                <div class="jumbotron jumbotron-fluid" style="background-image: url('../image/8/1.jpg');">
 
+                </div>
+            </a>
+
+            <hr class="featurette-divider">
             <?php
             echo $content[$cat[1]];
+            ?>
+
+            <hr class="featurette-divider">
+            <?php
             echo $content[$cat[2]];
             ?>
 
+            <hr class="featurette-divider">
+
             <div class="jumbotron jumbotron-fluid">
                 <!-- <div class="carousel-caption text-left">
                     <h1>temp</h1>
@@ -230,6 +234,7 @@ foreach ($game_cat as $category => $game_list) {
                 </div> -->
             </div>
 
+            <hr class="featurette-divider">
             <?php
             echo $content[$cat[3]];
             ?>

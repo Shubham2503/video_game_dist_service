@@ -63,11 +63,31 @@
             -ms-user-select: none;
             user-select: none;
         }
-
+        body {
+            background: radial-gradient(#40404b, #111118) rgba(34, 34, 40, 0.94);
+            color: white;
+        }
         @media (min-width: 768px) {
             .bd-placeholder-img-lg {
                 font-size: 3.5rem;
             }
+        }
+        .list-group-item{
+            color: #c4cacf;
+            background-color: #14213D;
+            background-clip: padding-box;
+            border: 1px solid #14213D;
+        }
+        .form-control:disabled, .form-control[readonly] {
+            background-color: #14213D;
+        }
+        .form-control,
+        .input-group-text,input[type =  text]:focus,input[type =  email]:focus,input[type =  password]:focus,input[type =  date]:focus 
+        input[type = text], input[type = password],input[type = date]{
+            color: #c4cacf;
+            background-color: #14213D;
+            background-clip: padding-box;
+            border: 1px solid #14213D;
         }
     </style>
     <link href="form-validation.css" rel="stylesheet">
