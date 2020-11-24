@@ -56,7 +56,7 @@ foreach ($game_cat as $category => $game_list) {
   <div class='content'>";
   $count = 0;
   foreach ($game_list as $game_id) {
-    if ($count == 4)
+    if ($count == 3)
       break;
     $sql = "SELECT * FROM games where game_id = $game_id";
     $res = mysqli_query($conn, $sql);
@@ -71,12 +71,14 @@ foreach ($game_cat as $category => $game_list) {
     $count++;
     $content[$category] .= "
     <div class='card' style='height:auto'>
+    <a href='../game/index.php?game_id=$id'>
   <img class='card-img-top img-fluid' src='../image/$id/1.jpg' alt='Card image cap'>
+  </a>
   <div class='card-body' style= 'padding: 9px;'>
     <h5 class='card-title' style = 'margin-bottom:0; font-size: 1rem'>$name</h5>
     <footer class='blockquote-footer'>by <cite title='Source Title'>$dev</cite></footer>
     <p class='card-text' style = 'margin-bottom:0; margin-top:10px '>$ $price</p>
-    <a href='../game/index.php?game_id=$id' class='btn btn-primary'>Buy</a>
+    
   </div>
 </div>
            ";
@@ -126,6 +128,11 @@ console_log($content['Co-Op']);
   <link rel="stylesheet" href="card.css">
 </head>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<style>
+  .card {
+    width: 18rem;
+  }
+</style>
 
 <body>
   <button id="btnFlipHover">flip or hover</button>
@@ -165,13 +172,12 @@ console_log($content['Co-Op']);
   </a> -->
 
 
-    <?php 
-      foreach($cat as $c)
-      {
-        echo $content[$c];
-      }
+    <?php
+    foreach ($cat as $c) {
+      echo $content[$c];
+    }
     ?>
-    
+
 
 
   </div>

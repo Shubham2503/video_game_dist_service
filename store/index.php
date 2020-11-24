@@ -47,16 +47,44 @@ console_log($game_cat);
 
 // }
 
+// HTML CONTENT FOR CATEGORY NUMBER 1 
+$content = array();
 foreach ($game_cat as $category => $game_list) {
-    echo "<h2>$category</h2><br>";
+
+    $content[$category] = "<h2>$category</h2>
+  <div class='content'>";
+    $count = 0;
     foreach ($game_list as $game_id) {
+        if ($count == 3)
+            break;
         $sql = "SELECT * FROM games where game_id = $game_id";
         $res = mysqli_query($conn, $sql);
-        $row = mysqli_fetch_row($res);
-        $out = "<a href='../game/index.php?game_id=$row[0]'>$row[1]</a><br>";
-        echo $out;
+        $row = mysqli_fetch_assoc($res);
+        //$out = "<a href='../game/index.php?game_id=$row[0]'>$row[1]</a><br>";
+        $id = $row['game_id'];
+        $name = $row['name'];
+        $descrip = $row['descrip'];
+        $year = $row['year'];
+        $price = $row['price'];
+        $dev = $row['developer'];
+        $count++;
+        $content[$category] .= "
+    <div class='card' style='height:auto'>
+    <a href='../game/index.php?game_id=$id'>
+  <img class='card-img-top img-fluid' src='../image/$id/1.jpg' alt='Card image cap'>
+  </a>
+  <div class='card-body' style= 'padding: 9px;'>
+    <h5 class='card-title' style = 'margin-bottom:0; font-size: 1rem'>$name</h5>
+    <footer class='blockquote-footer'>by <cite title='Source Title'>$dev</cite></footer>
+    <p class='card-text' style = 'margin-bottom:0; margin-top:10px '>$ $price</p>
+    
+  </div>
+</div>
+           ";
     }
+    $content[$category] .= '</div>';
 }
+
 
 ?>
 
@@ -69,9 +97,17 @@ foreach ($game_cat as $category => $game_list) {
     <meta charset="utf-8">
     <title>Store</title>
     <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="card.css">
     <style>
+        main{
+            margin-top: 74px;
+        }
         .bg-dark {
             background-color: #14213D !important;
+        }
+
+        .card {
+            width: 18rem;
         }
 
         body {
@@ -130,7 +166,21 @@ foreach ($game_cat as $category => $game_list) {
     </nav>
 
     <main role="main">
+        <div class="container">
+            <h1 class="heading">Games</h1>
+            <p class="description">Excusive Games availabel....</p>
+            <?php
+            foreach ($cat as $c) {
+                echo $content[$c];
+            }
+            ?>
+        </div>
+        </div>
     </main>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
 </body>
 
 </html>
