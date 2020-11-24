@@ -107,19 +107,19 @@ console_log($user_game);
             background-color: #14213D;
         }
 
-        /* .form-control:disabled,
+        .form-control:disabled,
         .form-control[readonly] {
            
             opacity: 1;
         }
 
         .form-control,
-        .input-group-text {
+        .input-group-text,input[type =  text]:focus,input[type =  email]:focus,input[type =  password]:focus,input[type =  date]:focus {
             color: #c4cacf;
             background-color: #14213D;
             background-clip: padding-box;
             border: 1px solid #14213D;
-        } */
+        }
 
         .row {
             width: 100%;
