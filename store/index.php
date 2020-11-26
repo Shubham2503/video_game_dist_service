@@ -1,16 +1,13 @@
 <?php
-function console_log($output, $with_script_tags = true)
-{
-    $js_code = 'console.log(' . json_encode($output, JSON_HEX_TAG) . ');';
-    if ($with_script_tags) {
-        $js_code = '<script>' . $js_code . '</script>';
-    }
-    echo $js_code;
-}
-
 
 require '../include/connect_db.php';
-$sql = "SELECT DISTINCT category FROM game_category WHERE category not in ('New Releases') ORDER BY RAND() LIMIT 3";
+require '../include/console_log.php';
+session_start();
+if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
+    header("location: ../home/signin.php");
+    exit;
+}
+$sql = "SELECT DISTINCT category FROM game_category WHERE category not in ('New Releases') ORDER BY RAND() LIMIT 4";
 $result = mysqli_query($conn, $sql);
 $game_cat = array();
 $cat = array();
@@ -38,7 +35,7 @@ while ($row = mysqli_fetch_assoc($result)) {
 }
 console_log($game_cat);
 
-
+ 
 ////////////////////////////////////////////////////////////////
 
 // foreach($cat as $i)
@@ -195,6 +192,9 @@ foreach ($game_cat as $category => $game_list) {
                 <li class="nav-item active">
                     <a class="nav-link" href="../account/index.php">Account <span class="sr-only">(current)</span></a>
                 </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="../home/logout.php">Logout <span class="sr-only">(current)</span></a>
+                </li>
             </ul>
             <form class="form-inline my-2 my-lg-0" action="search.php" method="get">
                 <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" name="key">
@@ -238,6 +238,11 @@ foreach ($game_cat as $category => $game_list) {
             <hr class="featurette-divider">
             <?php
             echo $content[$cat[3]];
+            ?>
+
+            <hr class="featurette-divider">
+            <?php
+            echo $content[$cat[4]];
             ?>
 
         </div>

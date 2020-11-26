@@ -1,6 +1,10 @@
 <?php
 require '../include/connect_db.php';
-
+session_start();
+if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
+    header("location: ../home/signin.php");
+    exit;
+}
 
 
 //SETTING VARIABLES.............
@@ -57,7 +61,7 @@ mysqli_close($conn);
 
 <head>
     <meta charset="utf-8">
-    <title>Game</title>
+    <title><?php echo $name;?></title>
     <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;500&display=swap" rel="stylesheet">
@@ -135,6 +139,9 @@ mysqli_close($conn);
                 </li>
                 <li class="nav-item active">
                     <a class="nav-link" href="../account/index.php">Account <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="../home/logout.php">Logout <span class="sr-only">(current)</span></a>
                 </li>
             </ul>
         </div>

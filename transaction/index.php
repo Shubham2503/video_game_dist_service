@@ -272,7 +272,7 @@
                         </div>
                         <div class="col-md-3 mb-3">
                             <label for="cc-cvv">CVV</label>
-                            <input type="text" class="form-control" id="cc-cvv" placeholder="" required>
+                            <input type="text" class="form-control" id="cc-cvv" name="cvv" placeholder="" required>
                             <div class="invalid-feedback">
                                 Security code required
                             </div>

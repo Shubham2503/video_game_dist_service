@@ -71,7 +71,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Signin Template · Bootstrap</title>
+    <title>Signin</title>
     <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;500&display=swap" rel="stylesheet">

@@ -11,10 +11,12 @@ if (!empty($key)) {
     $key = '%' . strtolower($key) . '%';
     $sql = "SELECT DISTINCT game_id, name,descrip,year,price,developer FROM games NATURAL JOIN game_category WHERE lower(name) LIKE '$key' OR lower(year) LIKE '$key' OR lower(developer) LIKE '$key' OR lower(descrip) LIKE '$key' OR lower(category) LIKE '$key' ";
     $res = mysqli_query($conn, $sql);
-    $content = "<h2>$category</h2>
-  <div class='content'>";
+    $content = "<h2>...</h2>
+  <div class='container'>";
     $count = 0;
     if (mysqli_num_rows($res) > 0) {
+        $content .= "<div class='content'>";
+
         while ($row = mysqli_fetch_assoc($res)) {
 
             if ($count == 3) {
@@ -46,7 +48,7 @@ if (!empty($key)) {
             $count++;
         }
     } else {
-        echo "no results<br>";
+        $content .= "<p><br>No results found.<br></p>";
     }
     $content .= '</div>';
 
@@ -61,9 +63,8 @@ if (!empty($key)) {
 <html>
 
 <head>
-    <title>search</title>
     <meta charset="utf-8">
-    <title>Store</title>
+    <title>search</title>
     <!-- <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet"> -->
     <link rel="stylesheet" href="card.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -88,7 +89,7 @@ if (!empty($key)) {
         }
 
         
-        .card{
+        .card,p{
             width: 18rem;
             border: 1px solid black;
             background-color: black;

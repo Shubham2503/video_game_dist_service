@@ -4,6 +4,7 @@ $game_id = $_POST["game_id"];
 // $email = $_POST["email"];
 $email = $_POST["email"];
 $card_no = $_POST["card_no"];
+$cvv = $_POST["cvv"];
 $error = "";
 
 //debug////////
@@ -26,7 +27,7 @@ if (mysqli_num_rows($res) > 0) {
 if (empty($error)) {
 
     $result;
-    $sql = "INSERT INTO user_games (userid, game_id, card_no) VALUES ('$userid', '$game_id', '$card_no')";
+    $sql = "INSERT INTO user_games (userid, game_id, card_no,cvv) VALUES ('$userid', '$game_id', '$card_no','$cvv')";
     if (mysqli_query($conn, $sql)) {
         $result =  "transaction successfull <br> Enjoy your game, have a wonderful journy.";
     } else {

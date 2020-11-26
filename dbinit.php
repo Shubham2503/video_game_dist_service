@@ -55,7 +55,7 @@ $sql[] = "CREATE TABLE users (
     )";
 $sql[] = "CREATE TABLE `gamedb`.`games` ( `game_id` INT NOT NULL AUTO_INCREMENT , `name` VARCHAR(200) NOT NULL , `price` INT NOT NULL , `year` YEAR NOT NULL , `developer` VARCHAR(200) NOT NULL ,`vid_id` VARCHAR(200) NOT NULL , `descrip` VARCHAR(500) NOT NULL, `descrip2` VARCHAR(500) NOT NULL, `descrip3` VARCHAR(500) NOT NULL , PRIMARY KEY (`game_id`)) ENGINE = InnoDB;";
 $sql[] = "CREATE TABLE `gamedb`.`game_category` ( `game_id` INT NOT NULL , `category` VARCHAR(100) NOT NULL ) ENGINE = InnoDB;";
-$sql[] = "CREATE TABLE `gamedb`.`user_games` ( `userid` INT NOT NULL , `game_id` INT NOT NULL , `card_no` INT NOT NULL , `datetime` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ) ENGINE = InnoDB;";
+$sql[] = "CREATE TABLE `gamedb`.`user_games` ( `userid` INT NOT NULL , `game_id` INT NOT NULL , `card_no` INT NOT NULL , `datetime` TIMESTAMP DEFAULT CURRENT_TIMESTAMP, `cvv` INT NOT NULL ) ENGINE = InnoDB;";
 
 foreach ($sql as $query) {
     if (mysqli_query($conn, $query)) {
