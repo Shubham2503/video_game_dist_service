@@ -1,16 +1,13 @@
 <?php
-function console_log($output, $with_script_tags = true)
-{
-    $js_code = 'console.log(' . json_encode($output, JSON_HEX_TAG) . ');';
-    if ($with_script_tags) {
-        $js_code = '<script>' . $js_code . '</script>';
-    }
-    echo $js_code;
-}
-
 
 require '../include/connect_db.php';
-$sql = "SELECT DISTINCT category FROM game_category WHERE category not in ('New Releases') ORDER BY RAND() LIMIT 3";
+require '../include/console_log.php';
+session_start();
+if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
+    header("location: ../home/signin.php");
+    exit;
+}
+$sql = "SELECT DISTINCT category FROM game_category WHERE category not in ('New Releases') ORDER BY RAND() LIMIT 4";
 $result = mysqli_query($conn, $sql);
 $game_cat = array();
 $cat = array();
@@ -241,6 +238,11 @@ foreach ($game_cat as $category => $game_list) {
             <hr class="featurette-divider">
             <?php
             echo $content[$cat[3]];
+            ?>
+
+            <hr class="featurette-divider">
+            <?php
+            echo $content[$cat[4]];
             ?>
 
         </div>

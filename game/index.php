@@ -1,6 +1,10 @@
 <?php
 require '../include/connect_db.php';
-
+session_start();
+if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
+    header("location: ../home/signin.php");
+    exit;
+}
 
 
 //SETTING VARIABLES.............
