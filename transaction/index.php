@@ -53,7 +53,9 @@
     <meta charset="utf-8">
     <title>Checkout</title>
     <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;500&display=swap" rel="stylesheet">
+    
     <style>
         .bd-placeholder-img {
             font-size: 1.125rem;
@@ -64,6 +66,7 @@
             user-select: none;
         }
         body {
+            font-family: 'Ubuntu',sans-serif;
             background: radial-gradient(#40404b, #111118) rgba(34, 34, 40, 0.94);
             color: white;
         }

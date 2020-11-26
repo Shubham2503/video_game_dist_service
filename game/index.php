@@ -59,6 +59,9 @@ mysqli_close($conn);
     <meta charset="utf-8">
     <title>Game</title>
     <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;500&display=swap" rel="stylesheet">
+    
     <style>
         .bd-placeholder-img {
             font-size: 1.125rem;
@@ -74,7 +77,9 @@ mysqli_close($conn);
                 font-size: 3.5rem;
             }
         }
-
+        body{
+            font-family: 'Ubuntu',sans-serif;
+        }
         .bg-dark {
             background-color: #14213D !important;
         }

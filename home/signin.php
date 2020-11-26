@@ -73,9 +73,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
     <meta charset="utf-8">
     <title>Signin Template · Bootstrap</title>
     <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;500&display=swap" rel="stylesheet">
     <style>
       body{
         background:  radial-gradient(#40404b, #111118) rgba(34,34,40,0.94);
+        font-family: 'Ubuntu',sans-serif;
       }
       .bd-placeholder-img {
         font-size: 1.125rem;
