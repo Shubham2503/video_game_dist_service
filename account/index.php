@@ -122,6 +122,7 @@ if (array_key_exists('update', $_POST)) {
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;500&display=swap" rel="stylesheet">
     <style>
+
         body {
             font-family: 'Ubuntu', sans-serif;
         }
@@ -186,7 +187,18 @@ if (array_key_exists('update', $_POST)) {
             background-clip: padding-box;
             border: 1px solid #14213D;
         }
-
+        @media screen and (max-width: 915px)
+        {
+           table tbody  .hideme1{
+                display: none !important;
+            }
+        }
+        @media screen and (max-width: 694px)
+        {
+           table tbody  .hideme{
+                display: none !important;
+            }
+        }
         .row {
             width: 100%;
         }
@@ -345,15 +357,15 @@ if (array_key_exists('update', $_POST)) {
                             <table style="width:100%" id='tab'>
                                 <tr>
                                     <th style="color: #ffc107;">Game</th>
-                                    <th style="color: #ffc107;">Published</th>
-                                    <th style="color: #ffc107;">Developer studio</th>
-                                    <th style="color: #ffc107;">Date - Time</th>
+                                    <th style="color: #ffc107;" >Published</th>
+                                    <th style="color: #ffc107;" class="hideme">Developer studio</th>
+                                    <th style="color: #ffc107;" class="hideme1">Date - Time</th>
                                 </tr>
                                 <?php
                                 console_log($games);
                                 foreach ($user_game as $i) {
                                     echo "<tr>";
-                                    echo "<td><a href='../game/index.php?game_id=$i[0]'>" . $games[$i[0]]['name'] . "</a></td><td>" . $games[$i[0]]['year'] . "</td><td>" . $games[$i[0]]['developer'] . "</td><td>" . $i[1] . "</td>";
+                                    echo "<td><a href='../game/index.php?game_id=$i[0]'>" . $games[$i[0]]['name'] . "</a></td><td>" . $games[$i[0]]['year'] . "</td><td class='hideme'>" . $games[$i[0]]['developer'] . "</td><td class='hideme1'>" . $i[1] . "</td>";
                                     echo "</tr>";
                                 }
                                 ?>
