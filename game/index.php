@@ -57,7 +57,7 @@ mysqli_close($conn);
 
 <head>
     <meta charset="utf-8">
-    <title>Game</title>
+    <title><?php echo $name;?></title>
     <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;500&display=swap" rel="stylesheet">

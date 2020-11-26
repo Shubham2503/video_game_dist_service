@@ -117,7 +117,7 @@ if (array_key_exists('update', $_POST)) {
 
 <head>
     <meta charset="utf-8">
-    <title>Checkout</title>
+    <title>Account</title>
     <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;500&display=swap" rel="stylesheet">
