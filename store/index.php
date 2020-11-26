@@ -101,6 +101,9 @@ foreach ($game_cat as $category => $game_list) {
     <title>Store</title>
     <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="card.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;500&display=swap" rel="stylesheet">
+    
     <style>
         main {
             margin-top: 74px;
@@ -123,6 +126,9 @@ foreach ($game_cat as $category => $game_list) {
 
         body {
             background-color: black;
+           
+            font-family: 'Ubuntu', sans-serif;
+        
         }
 
         .h2,

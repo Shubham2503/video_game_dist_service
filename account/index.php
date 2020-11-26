@@ -62,8 +62,13 @@ console_log($user_game);
     <meta charset="utf-8">
     <title>Checkout</title>
     <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;500&display=swap" rel="stylesheet">
     <style>
+        body {
+            font-family: 'Ubuntu', sans-serif;
+        }
+
         .bd-placeholder-img {
             font-size: 1.125rem;
             text-anchor: middle;
@@ -109,12 +114,16 @@ console_log($user_game);
 
         .form-control:disabled,
         .form-control[readonly] {
-           
+
             opacity: 1;
         }
 
         .form-control,
-        .input-group-text,input[type =  text]:focus,input[type =  email]:focus,input[type =  password]:focus,input[type =  date]:focus {
+        .input-group-text,
+        input[type=text]:focus,
+        input[type=email]:focus,
+        input[type=password]:focus,
+        input[type=date]:focus {
             color: #c4cacf;
             background-color: #14213D;
             background-clip: padding-box;
@@ -124,8 +133,6 @@ console_log($user_game);
         .row {
             width: 100%;
         }
-
-        
     </style>
     <link href="form-validation.css" rel="stylesheet">
 </head>
