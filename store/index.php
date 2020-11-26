@@ -38,7 +38,7 @@ while ($row = mysqli_fetch_assoc($result)) {
 }
 console_log($game_cat);
 
-
+ 
 ////////////////////////////////////////////////////////////////
 
 // foreach($cat as $i)
@@ -194,6 +194,9 @@ foreach ($game_cat as $category => $game_list) {
                 </li>
                 <li class="nav-item active">
                     <a class="nav-link" href="../account/index.php">Account <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="../home/logout.php">Logout <span class="sr-only">(current)</span></a>
                 </li>
             </ul>
             <form class="form-inline my-2 my-lg-0" action="search.php" method="get">

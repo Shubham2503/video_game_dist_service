@@ -131,6 +131,9 @@ mysqli_close($conn);
                 <li class="nav-item active">
                     <a class="nav-link" href="../account/index.php">Account <span class="sr-only">(current)</span></a>
                 </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="../home/logout.php">Logout <span class="sr-only">(current)</span></a>
+                </li>
             </ul>
         </div>
     </nav>
