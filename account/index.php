@@ -53,6 +53,63 @@ while ($row = mysqli_fetch_assoc($res)) {
 console_log($user_game);
 
 
+function update()
+{
+    $severname = "localhost";
+    $username = "root";
+    $pwd = "";
+    $dbname = "gamedb";
+    $conn = new mysqli($severname, $username, $pwd, $dbname);
+    // Check connection
+    if (!$conn) {
+        die("Connection failed: " . $conn->connect_error);
+    } else {
+        $uname = $_POST['uname'];
+        $pass = $_POST['pass'];
+        $c_pass = $_POST['c_pass'];
+        $fname = $_POST['fname'];
+        $email = $_POST['email'];
+        $lname = $_POST['lname'];
+        if ($pass != $c_pass)
+            echo "<h3> Confirm password is not same </h3>";
+        else if(strlen(trim($_POST["pass"])) < 8)
+        {
+            echo "<h3> Password cannot be empty. </h3>";
+        }
+        else {
+            $sql = "SELECT * FROM users WHERE username = '$uname'";
+            $res = mysqli_query($conn, $sql);
+            if ($row = mysqli_fetch_assoc($res)) {
+                $id = $row["userid"];
+                if ($id != $_COOKIE["userid"])
+                    echo "<h3> Username already exist. </h3>";
+                else {
+                    $sql = "UPDATE users SET username = '$uname',fname = '$fname',lname = '$lname',password = '$pass',email='$email' WHERE userid = '$id'";
+                    $res = mysqli_query($conn, $sql);
+                    $_SESSION['uname'] = $uname;
+                    $_SESSION['pass'] = $pass;
+                    $conn->close();
+                    echo 'updated';
+                    header("Location:index.php");
+                }
+            } else {
+                $id = $_COOKIE['userid'];
+                $sql = "UPDATE users SET username = '$uname',fname = '$fname',lname = '$lname',password = '$pass',email='$email' WHERE userid = '$id'";
+                $res = mysqli_query($conn, $sql);
+                $_SESSION['uname'] = $uname;
+                $_SESSION['pass'] = $pass;
+                $conn->close();
+                echo 'updated';
+                header("Location:index.php");
+            }
+        }
+    }
+}
+if (array_key_exists('update', $_POST)) {
+    update();
+}
+
+
 ?>
 
 <!doctype html>
@@ -109,12 +166,16 @@ console_log($user_game);
 
         .form-control:disabled,
         .form-control[readonly] {
-           
+
             opacity: 1;
         }
 
         .form-control,
-        .input-group-text,input[type =  text]:focus,input[type =  email]:focus,input[type =  password]:focus,input[type =  date]:focus {
+        .input-group-text,
+        input[type=text]:focus,
+        input[type=email]:focus,
+        input[type=password]:focus,
+        input[type=date]:focus {
             color: #c4cacf;
             background-color: #14213D;
             background-clip: padding-box;
@@ -124,8 +185,6 @@ console_log($user_game);
         .row {
             width: 100%;
         }
-
-        
     </style>
     <link href="form-validation.css" rel="stylesheet">
 </head>
@@ -160,11 +219,11 @@ console_log($user_game);
                 <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
                     <div class="container">
                         <div class="col-md-12 order-md-1">
-                            <form class="needs-validation" novalidate method="post" action="receipt.php">
+                            <form class="needs-validation" novalidate method="post">
                                 <div class="row">
                                     <div class="col-md-6 mb-3">
                                         <label for="firstName">First name</label>
-                                        <input type="text" class="form-control" id="firstName" placeholder="" value="<?php echo $fname ?>" required>
+                                        <input type="text" class="form-control" name="fname" id="firstName" placeholder="" value="<?php echo $fname ?>" required>
                                         <div class="invalid-feedback">
                                             Valid first name is required.
                                         </div>
@@ -172,7 +231,7 @@ console_log($user_game);
 
                                     <div class="col-md-6 mb-3">
                                         <label for="lastName">Last name</label>
-                                        <input type="text" class="form-control" id="lastName" placeholder="" value="<?php echo $lname ?>" required>
+                                        <input type="text" class="form-control" name="lname" id="lastName" placeholder="" value="<?php echo $lname ?>" required>
                                         <div class="invalid-feedback">
                                             Valid last name is required.
                                         </div>
@@ -186,7 +245,7 @@ console_log($user_game);
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text">@</span>
                                             </div>
-                                            <input type="text" class="form-control" id="username" placeholder="Username" value="<?php echo $username ?>" required>
+                                            <input type="text" class="form-control" name="uname" id="username" placeholder="Username" value="<?php echo $username ?>" required>
                                             <div class="invalid-feedback" style="width: 100%;">
                                                 Your username is required.
                                             </div>
@@ -195,7 +254,7 @@ console_log($user_game);
 
                                     <div class="col-md-6 mb-3">
                                         <label for="email">Email</label>
-                                        <input type="email" class="form-control" id="email" placeholder="you@example.com" value="<?php echo $email ?>" required>
+                                        <input type="email" class="form-control" name="email" id="email" placeholder="you@example.com" value="<?php echo $email ?>" required>
                                         <div class="invalid-feedback">
                                             Please enter a valid email address for shipping updates.
                                         </div>
@@ -206,7 +265,7 @@ console_log($user_game);
 
                                     <div class="col-md-6 mb-3">
                                         <label for="dob">DOB</label>
-                                        <input type="date" class="form-control" id="dob" value="" required>
+                                        <input type="date" class="form-control" name="dob" id="dob" value="" required>
                                         <div class="invalid-feedback">
                                             Please enter a valid DOB.
                                         </div>
@@ -218,7 +277,7 @@ console_log($user_game);
 
                                     <div class="col-md-6 mb-3">
                                         <label for="pass">Password</label>
-                                        <input type="password" class="form-control" id="pass" value="" required>
+                                        <input type="password" class="form-control" name="pass" value="" required>
                                         <div class="invalid-feedback">
                                             Please enter a valid password.
                                         </div>
@@ -226,7 +285,7 @@ console_log($user_game);
 
                                     <div class="col-md-6 mb-3">
                                         <label for="c_pass">Confirm Password</label>
-                                        <input type="password" class="form-control" id="c_pass" value="" required>
+                                        <input type="password" class="form-control" name="c_pass" value="" required>
                                         <div class="invalid-feedback">
                                             Please enter a valid password.
                                         </div>
