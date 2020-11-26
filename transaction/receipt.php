@@ -70,12 +70,16 @@ if (empty($error)) {
     <meta charset="utf-8">
     <title>Receipt</title>
     <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;500&display=swap" rel="stylesheet">
+    
     <link href="receipt.css" rel="stylesheet">
     <style>
         
         body {
             background: radial-gradient(#000, #000) rgba(34, 34, 40, 0.94);
             color: white;
+            font-family: 'Ubuntu',sans-serif;
         }
     </style>
 </head>
