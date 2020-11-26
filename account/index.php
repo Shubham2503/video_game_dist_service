@@ -119,8 +119,13 @@ if (array_key_exists('update', $_POST)) {
     <meta charset="utf-8">
     <title>Checkout</title>
     <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;500&display=swap" rel="stylesheet">
     <style>
+        body {
+            font-family: 'Ubuntu', sans-serif;
+        }
+
         .bd-placeholder-img {
             font-size: 1.125rem;
             text-anchor: middle;
